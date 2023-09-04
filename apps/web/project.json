@@ -2,25 +2,50 @@
   "name": "web",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "flash-cards",
+  "prefix": "angular-web",
   "sourceRoot": "apps/web/src",
   "tags": [],
+  "i18n": {
+    "sourceLocale": "en-US",
+    "locales": {
+      "ru": {
+        "translation": "apps/web/src/i18n/messages.xlf",
+        "baseHref": ""
+      }
+    }
+  },
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/web",
+        "customWebpackConfig": {
+          "path": "apps/web/webpack.config.ts"
+        },
+        "outputPath": "dist/apps/web/browser",
         "index": "apps/web/src/index.html",
         "main": "apps/web/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/web/tsconfig.app.json",
-        "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
+        "assets": [
+          "apps/web/src/favicon.ico",
+          "apps/web/src/sitemap.xml",
+          "apps/web/src/site.webmanifest",
+          "apps/web/src/browserconfig.xml",
+          "apps/web/src/robots.txt",
+          "apps/web/src/assets"
+        ],
         "styles": ["apps/web/src/styles.scss"],
-        "scripts": []
+        "allowedCommonJsDependencies": ["hammerjs"],
+        "scripts": [],
+        "localize": ["ru"]
       },
       "configurations": {
         "production": {
+          "index": {
+            "input": "apps/web/src/index.prod.html",
+            "output": "index.html"
+          },
           "budgets": [
             {
               "type": "initial",
@@ -30,10 +55,11 @@
             {
               "type": "anyComponentStyle",
               "maximumWarning": "2kb",
-              "maximumError": "4kb"
+              "maximumError": "10kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "sourceMap": true
         },
         "development": {
           "buildOptimizer": false,
@@ -47,7 +73,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "web:build:production"
@@ -84,6 +110,61 @@
           "codeCoverage": true
         }
       }
+    },
+    "server": {
+      "executor": "@nx/angular:webpack-server",
+      "options": {
+        "outputPath": "dist/apps/web/server",
+        "main": "apps/web/server.ts",
+        "tsConfig": "apps/web/tsconfig.server.json",
+        "localize": ["ru"]
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "web:build:development",
+          "serverTarget": "web:server:development"
+        },
+        "production": {
+          "browserTarget": "web:build:production",
+          "serverTarget": "web:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "routes": ["/"],
+        "routesFile": "apps/web/dynamic-routes.txt",
+        "guessRoutes": false
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "web:build:production",
+          "serverTarget": "web:server:production"
+        },
+        "development": {
+          "browserTarget": "web:build:development",
+          "serverTarget": "web:server:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }

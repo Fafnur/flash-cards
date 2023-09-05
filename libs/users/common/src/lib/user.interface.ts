@@ -16,6 +16,12 @@ export interface User {
   readonly status: UserStatus;
 }
 
+export interface UserRegister {
+  readonly firstname: string;
+  readonly lastname: string;
+  readonly email: string;
+}
+
 export interface UserChange {
   readonly firstname: string;
   readonly lastname: string;

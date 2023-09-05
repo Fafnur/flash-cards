@@ -1,0 +1,15 @@
+### Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "fafnur@yandex.ru",
+  "password": "123456"
+}
+
+### Get user profile
+GET http://localhost:3000/user/profile
+Content-Type: application/json
+Accept: application/json
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1NzY3MzY4MCwiZXhwIjoxNjU3Njc3MjgwfQ.C63aEiZDPDEyAC6oAPvbFosRgDVWDYzMDRNJNNVyrpc

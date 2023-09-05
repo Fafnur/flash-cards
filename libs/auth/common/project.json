@@ -1,7 +1,7 @@
 {
-  "name": "users-common",
+  "name": "auth-common",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/users/common/src",
+  "sourceRoot": "libs/auth/common/src",
   "prefix": "flash-cards",
   "tags": [],
   "projectType": "library",
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/users/common/jest.config.ts",
+        "jestConfig": "libs/auth/common/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -24,7 +24,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/users/common/**/*.ts", "libs/users/common/**/*.html"]
+        "lintFilePatterns": ["libs/auth/common/**/*.ts", "libs/auth/common/**/*.html"]
       }
     }
   }

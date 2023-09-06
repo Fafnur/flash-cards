@@ -19,7 +19,7 @@ export class AuthController {
   @UsePipes(
     new ValidationPipe({
       transform: true,
-      exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
+      exceptionFactory: formExceptionFactory,
     }),
   )
   async register(@Body() payload: AuthRegister) {

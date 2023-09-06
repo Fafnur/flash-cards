@@ -1,11 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
-import { User } from '@flash-cards/users/common';
-
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  override handleRequest(err: unknown, user: User | null): any {
+  override handleRequest<T>(err: unknown, user: T | null): T {
     // You can throw an exception based on either "info" or "err" arguments
     if (err || !user) {
       throw err || new UnauthorizedException();

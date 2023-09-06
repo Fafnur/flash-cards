@@ -4,27 +4,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "fafnur@yandex.ru",
-  "password": "123456"
-}
-
-### Wrong login
-POST http://localhost:3000/auth/login
-Content-Type: application/json
-Accept: application/json
-
-{
-  "username": "guest",
-  "password": "123456"
-}
-
-### Reset
-POST http://localhost:3000/auth/reset?backUrl=http://localhost:4200
-Content-Type: application/json
-Accept: application/json
-
-{
-  "email": "fafnur@yandex.ru"
+  "email": "alex92.serenko@gmail.com"
 }
 
 ### Register
@@ -34,15 +14,18 @@ Accept: application/json
 
 
 {
-  "firstname": "Ivan2",
-  "lastname": "Groot",
-  "email": "ff@sws.wrt",
-  "password": "123456"
+  "firstname": "Alex",
+  "lastname": "Serenko",
+  "email": "alex92.serenko@gmail.com"
 }
 
 
-### Confirm email
-GET http://localhost:3000/auth/confirm/163e916f64
+### Confirm
+POST http://localhost:3000/auth/confirm
 Content-Type: application/json
 Accept: application/json
 
+{
+  "email": "alex92.serenko@gmail.com",
+  "code": "07986"
+}

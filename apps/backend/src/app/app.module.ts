@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MailerModule } from '@nestjs-modules/mailer';
+
+import { AuthModule } from '@flash-cards/backend/auth';
+import { UsersModule } from '@flash-cards/backend/users';
 
 import { AppController } from './app.controller';
-import { configurationFactory, typeOrmFactory } from './config/config';
+import { configurationFactory, mailFactory, typeOrmFactory } from './config/config';
 
 @Module({
   imports: [
@@ -16,6 +20,12 @@ import { configurationFactory, typeOrmFactory } from './config/config';
       useFactory: typeOrmFactory,
       inject: [ConfigService],
     }),
+    MailerModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: mailFactory,
+    }),
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [],

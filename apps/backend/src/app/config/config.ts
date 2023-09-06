@@ -45,3 +45,17 @@ export function configurationFactory(): Config {
 export async function typeOrmFactory(configService: ConfigService): Promise<TypeOrmModuleOptions> {
   return await configService.get('typeOrm');
 }
+
+export function mailFactory(configService: ConfigService) {
+  const transport = configService.get<string>('MAIL_TRANSPORT') ?? '';
+  const from = configService.get<string>('MAIL_FROM') ?? '';
+
+  if (!transport || !from) {
+    console.warn('Mail transport is empty.');
+  }
+
+  return {
+    transport,
+    defaults: { from },
+  };
+}

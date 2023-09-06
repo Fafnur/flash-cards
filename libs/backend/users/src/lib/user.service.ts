@@ -13,25 +13,11 @@ export class UserService {
   }
 
   async findOne(uuid: string): Promise<UserEntity | null> {
-    return (await this.userRepository.findOneBy({ uuid })) ?? null;
-  }
-
-  async findOneByUsername(username: string): Promise<UserEntity | null> {
-    const users = await this.userRepository.findBy({ username });
-
-    return users.length === 1 ? users[0] : null;
+    return await this.userRepository.findOneBy({ uuid });
   }
 
   async findOneByEmail(email: string): Promise<UserEntity | null> {
-    const users = await this.userRepository.findBy({ email });
-
-    return users.length === 1 ? users[0] : null;
-  }
-
-  async findOneByReset(reset: string): Promise<UserEntity | null> {
-    const users = await this.userRepository.findBy({ reset });
-
-    return users.length === 1 ? users[0] : null;
+    return await this.userRepository.findOneBy({ email });
   }
 
   async createUser(user: Partial<UserEntity>): Promise<UserEntity> {

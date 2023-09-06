@@ -1,5 +1,6 @@
 import { Controller, Get, NotFoundException, Request, UseGuards } from '@nestjs/common';
 
+import { JwtAuthGuard } from '@flash-cards/backend/core';
 import { User } from '@flash-cards/users/common';
 
 import { UserService } from './user.service';

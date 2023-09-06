@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailerModule } from '@nestjs-modules/mailer';
 
 import { AuthModule } from '@flash-cards/backend/auth';
+import { CardModule } from '@flash-cards/backend/cards';
+import { GroupModule } from '@flash-cards/backend/groups';
 import { UsersModule } from '@flash-cards/backend/users';
 
 import { AppController } from './app.controller';
@@ -26,6 +28,8 @@ import { configurationFactory, mailFactory, typeOrmFactory } from './config/conf
     }),
     AuthModule,
     UsersModule,
+    CardModule,
+    GroupModule,
   ],
   controllers: [AppController],
   providers: [],

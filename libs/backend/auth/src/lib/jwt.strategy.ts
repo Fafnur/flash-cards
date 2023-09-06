@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
-import { AuthJwt } from '@flash-cards/auth/common';
+import { Entity } from '@flash-cards/core';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -15,7 +15,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: AuthJwt): Promise<AuthJwt> {
+  async validate(payload: Entity): Promise<Entity> {
     return { uuid: payload.uuid };
   }
 }

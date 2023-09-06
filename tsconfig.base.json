@@ -19,6 +19,7 @@
       "@flash-cards/backend/auth": ["libs/backend/auth/src/index.ts"],
       "@flash-cards/backend/core": ["libs/backend/core/src/index.ts"],
       "@flash-cards/backend/users": ["libs/backend/users/src/index.ts"],
+      "@flash-cards/groups/common": ["libs/groups/common/src/index.ts"],
       "@flash-cards/users/common": ["libs/users/common/src/index.ts"]
     }
   },

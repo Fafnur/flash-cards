@@ -1,0 +1,42 @@
+@use 'libs/web/ui/grid/mixins' as device;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  &.flashcards-fluid {
+    max-width: 100%;
+  }
+
+  &:not(.flashcards-mobile-no-gutter) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  @include device.media-tablet-portrait() {
+    &:not(.flashcards-fluid) {
+      max-width: 788px;
+    }
+  }
+
+  @include device.media-tablet-landscape() {
+    &:not(.flashcards-fluid) {
+      max-width: 928px;
+    }
+  }
+
+  @include device.media-web-portrait() {
+    &:not(.flashcards-fluid) {
+      max-width: 808px;
+    }
+  }
+
+  @include device.media-web-landscape() {
+    &:not(.flashcards-fluid) {
+      max-width: 1200px;
+    }
+  }
+}

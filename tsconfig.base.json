@@ -25,6 +25,7 @@
       "@flashcards/core": ["libs/core/src/index.ts"],
       "@flashcards/groups/common": ["libs/groups/common/src/index.ts"],
       "@flashcards/users/common": ["libs/users/common/src/index.ts"],
+      "@flashcards/web/ui/container": ["libs/web/ui/container/src/index.ts"],
       "@flashcards/web/ui/grid": ["libs/web/ui/grid/src/index.ts"],
       "@flashcards/web/ui/layout": ["libs/web/ui/layout/src/index.ts"]
     }

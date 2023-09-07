@@ -7,6 +7,11 @@ export const appRoutes: Route[] = [
     path: '',
     component: LayoutComponent,
     children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
       // {
       //   path: '',
       //   component: HeaderComponent,

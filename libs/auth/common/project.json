@@ -2,7 +2,7 @@
   "name": "auth-common",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/auth/common/src",
-  "prefix": "flash-cards",
+  "prefix": "flashcards",
   "tags": [],
   "projectType": "library",
   "targets": {

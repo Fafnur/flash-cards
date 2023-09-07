@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
-import { CardChange, CardCreate } from '@flash-cards/cards/common';
+import { CardChange, CardCreate } from '@flashcards/cards/common';
 
 export class CardCreateForm implements CardCreate {
   @IsNotEmpty()

@@ -3,7 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { UsersModule } from '@flash-cards/backend/users';
+import { UsersModule } from '@flashcards/backend/users';
 
 import { AuthController } from './auth.controller';
 import { AuthEntity } from './auth.entity';

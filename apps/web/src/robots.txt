@@ -5,5 +5,5 @@ User-agent: Yandex
 Disallow: /api
 Clean-param: bonus&utm_source&utm_medium&utm_campaign&utm_term&utm_content&click_id&appstore&platform
 
-Host: https://flash-cards.fafn.ru
-Sitemap: https://flash-cards.fafn.ru/sitemap.xml
+Host: https://flashcards.fafn.ru
+Sitemap: https://flashcards.fafn.ru/sitemap.xml

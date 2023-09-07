@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { GroupDto } from '@flash-cards/groups/common';
+import { GroupDto } from '@flashcards/groups/common';
 
 import { GroupEntity } from './group.entity';
 import { GroupCreateForm } from './group.form';

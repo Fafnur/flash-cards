@@ -5,9 +5,9 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { randomInt } from 'node:crypto';
 import { Repository } from 'typeorm';
 
-import { AuthConfirm, AuthCredentials, AuthResponse } from '@flash-cards/auth/common';
-import { UserService } from '@flash-cards/backend/users';
-import { UserRegister, UserStatus } from '@flash-cards/users/common';
+import { AuthConfirm, AuthCredentials, AuthResponse } from '@flashcards/auth/common';
+import { UserService } from '@flashcards/backend/users';
+import { UserRegister, UserStatus } from '@flashcards/users/common';
 
 import { AuthEntity } from './auth.entity';
 

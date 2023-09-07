@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString, Length } from 'class-validator';
 
-import { UserRegister } from '@flash-cards/users/common';
+import { UserRegister } from '@flashcards/users/common';
 
 export class AuthRegister implements UserRegister {
   @IsNotEmpty()

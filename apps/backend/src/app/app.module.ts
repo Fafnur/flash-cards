@@ -3,10 +3,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailerModule } from '@nestjs-modules/mailer';
 
-import { AuthModule } from '@flash-cards/backend/auth';
-import { CardModule } from '@flash-cards/backend/cards';
-import { GroupModule } from '@flash-cards/backend/groups';
-import { UsersModule } from '@flash-cards/backend/users';
+import { AuthModule } from '@flashcards/backend/auth';
+import { CardModule } from '@flashcards/backend/cards';
+import { GroupModule } from '@flashcards/backend/groups';
+import { UsersModule } from '@flashcards/backend/users';
 
 import { AppController } from './app.controller';
 import { configurationFactory, mailFactory, typeOrmFactory } from './config/config';

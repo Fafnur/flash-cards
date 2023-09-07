@@ -5,6 +5,7 @@ export * from './lib/form/extract-touched.directive';
 export * from './lib/localdb/localdb.service';
 export * from './lib/operators/extract.operator';
 export * from './lib/operators/not-null-or-undefined.operator';
+export * from './lib/size/size.directive';
 export * from './lib/storages/local/local-storage-async';
 export * from './lib/storages/local/local-storage-native';
 export * from './lib/storages/local/local-storage-sync';

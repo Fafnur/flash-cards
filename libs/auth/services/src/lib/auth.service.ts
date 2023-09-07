@@ -24,7 +24,7 @@ export class AuthService {
       retry({
         count: 3,
         delay: (error, retryCount) => {
-          if ([400, 500].includes(error.status)) {
+          if ([400, 404, 500].includes(error.status)) {
             return throwError(() => error);
           }
 

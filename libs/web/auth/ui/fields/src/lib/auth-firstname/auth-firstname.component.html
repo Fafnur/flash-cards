@@ -1,1 +1,7 @@
-<p>auth-firstname works!</p>
+<mat-form-field extractTouched [control]="control">
+  <mat-label i18n="Auth Field|First Name Label">First name</mat-label>
+  <input type="tel" matInput [formControl]="control" i18n-placeholder="Auth field|First Name placeholder" placeholder="John" />
+  <mat-error i18n="Auth Field|First Name Error Required" *ngIf="control.hasError('required')">
+    First name is <strong>required</strong>
+  </mat-error>
+</mat-form-field>

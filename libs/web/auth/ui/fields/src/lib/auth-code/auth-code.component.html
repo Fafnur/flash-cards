@@ -1,1 +1,5 @@
-<p>auth-code works!</p>
+<mat-form-field extractTouched [control]="control">
+  <mat-label i18n="Auth Field|Code Label">Code</mat-label>
+  <input type="tel" matInput [formControl]="control" i18n-placeholder="Auth field|Code placeholder" placeholder="00000" />
+  <mat-error i18n="Auth Field|Code Error Required" *ngIf="control.hasError('required')"> Code is <strong>required</strong> </mat-error>
+</mat-form-field>

@@ -1,1 +1,11 @@
-<p>auth-email works!</p>
+<mat-form-field appearance="fill" extractTouched [control]="control">
+  <mat-label i18n="Auth Field|Email label">Email</mat-label>
+  <input type="email" matInput [formControl]="control" i18n-placeholder="Auth field|Email placeholder" placeholder="sample@example.com" />
+  <mat-error i18n="Auth Field|Email Error Server" *ngIf="control.hasError('server') && !control.hasError('required')">
+    Another user uses this email
+  </mat-error>
+  <mat-error i18n="Auth Field|Email Error Invalid" *ngIf="control.hasError('email') && !control.hasError('required')">
+    Please enter a valid email address
+  </mat-error>
+  <mat-error i18n="Auth Field|Email Error Required" *ngIf="control.hasError('required')"> Email is <strong>required</strong> </mat-error>
+</mat-form-field>

@@ -24,7 +24,8 @@
       "@flash-cards/cards/common": ["libs/cards/common/src/index.ts"],
       "@flash-cards/core": ["libs/core/src/index.ts"],
       "@flash-cards/groups/common": ["libs/groups/common/src/index.ts"],
-      "@flash-cards/users/common": ["libs/users/common/src/index.ts"]
+      "@flash-cards/users/common": ["libs/users/common/src/index.ts"],
+      "@flash-cards/web/ui/layout": ["libs/web/ui/layout/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

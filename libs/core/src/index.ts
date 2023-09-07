@@ -1,5 +1,6 @@
 export * from './lib/api/api.service';
 export * from './lib/api/api.util';
+export * from './lib/api/interceptors/provide';
 export * from './lib/form/extract-touched.directive';
 export * from './lib/localdb/localdb.service';
 export * from './lib/operators/extract.operator';
@@ -13,3 +14,5 @@ export * from './lib/storages/session/session-storage-native';
 export * from './lib/storages/session/session-storage-sync';
 export * from './lib/storages/storage';
 export * from './lib/types/entity.type';
+export * from './lib/utils/uuid.util';
+export * from './lib/visitor/visitor';

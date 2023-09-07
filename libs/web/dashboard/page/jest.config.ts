@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-auth-confirm-page',
-  preset: '../../../../../jest.preset.js',
+  displayName: 'web-dashboard-page',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../../../coverage/libs/web/auth/confirm/page',
+  coverageDirectory: '../../../../coverage/libs/web/dashboard/page',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

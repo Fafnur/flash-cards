@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, retry, tap, throwError, timer } from 'rxjs';
 
 import { AuthConfirm, AuthCredentials, AuthRegister, AuthResponse } from '@flashcards/auth/common';
-import { AuthApiService, AuthStorageService } from '@flashcards/auth/services';
+
+import { AuthApiService } from './auth-api.service';
+import { AuthStorageService } from './auth-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,10 @@ export class AuthService {
     private readonly authApiService: AuthApiService,
     private readonly authStorageService: AuthStorageService,
   ) {}
+
+  get logged(): boolean {
+    return this.authStorageService.get() !== null;
+  }
 
   login(credentials: AuthCredentials): Observable<void> {
     return this.authApiService.login(credentials).pipe(

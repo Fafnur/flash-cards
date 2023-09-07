@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
 
-
 export const appRoutes: Route[] = [
   // {
   //   path: '',
@@ -18,7 +17,7 @@ export const appRoutes: Route[] = [
   //     },
   //     {
   //       path: '**',
-  //       loadComponent: () => import('@flash-cards/errors/not-found/page').then((modules) => modules.NotFoundPageComponent),
+  //       loadComponent: () => import('@flashcards/errors/not-found/page').then((modules) => modules.NotFoundPageComponent),
   //     },
   //   ],
   // },

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "flash-cards",
+  "npmScope": "flashcards",
   "cli": {
     "packageManager": "yarn",
     "defaultCollection": "@nx/angular"

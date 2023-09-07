@@ -2,7 +2,7 @@
   "name": "web-ui-layout",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/web/ui/layout/src",
-  "prefix": "flash-cards",
+  "prefix": "flashcards",
   "tags": [],
   "projectType": "library",
   "targets": {

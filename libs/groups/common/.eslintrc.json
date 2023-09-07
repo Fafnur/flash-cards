@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "flash-cards",
+            "prefix": "flashcards",
             "style": "kebab-case"
           }
         ]

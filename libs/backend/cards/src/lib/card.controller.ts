@@ -13,9 +13,9 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 
-import { formExceptionFactory, JwtAuthGuard } from '@flash-cards/backend/core';
-import { CardDto } from '@flash-cards/cards/common';
-import { Entity } from '@flash-cards/core';
+import { formExceptionFactory, JwtAuthGuard } from '@flashcards/backend/core';
+import { CardDto } from '@flashcards/cards/common';
+import { Entity } from '@flashcards/core';
 
 import { CardChangeForm, CardCreateForm } from './card.form';
 import { CardService } from './card.service';

@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 
-import { AuthConfirm, AuthCredentials } from '@flash-cards/auth/common';
-import { formExceptionFactory } from '@flash-cards/backend/core';
+import { AuthConfirm, AuthCredentials } from '@flashcards/auth/common';
+import { formExceptionFactory } from '@flashcards/backend/core';
 
 import { AuthRegister } from './auth.form';
 import { AuthService } from './auth.service';

@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-import { User, UserStatus } from '@flash-cards/users/common';
+import { User, UserStatus } from '@flashcards/users/common';
 
 @Entity({
   name: 'users',

@@ -13,9 +13,9 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 
-import { formExceptionFactory, JwtAuthGuard } from '@flash-cards/backend/core';
-import { Entity } from '@flash-cards/core';
-import { GroupDto } from '@flash-cards/groups/common';
+import { formExceptionFactory, JwtAuthGuard } from '@flashcards/backend/core';
+import { Entity } from '@flashcards/core';
+import { GroupDto } from '@flashcards/groups/common';
 
 import { GroupChangeForm, GroupCreateForm } from './group.form';
 import { GroupService } from './group.service';

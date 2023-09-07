@@ -1,9 +1,9 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { GroupEntity } from '@flash-cards/backend/groups';
-import { CardDto } from '@flash-cards/cards/common';
-import { Group } from '@flash-cards/groups/common';
+import { GroupEntity } from '@flashcards/backend/groups';
+import { CardDto } from '@flashcards/cards/common';
+import { Group } from '@flashcards/groups/common';
 
 @Entity({
   name: 'cards',

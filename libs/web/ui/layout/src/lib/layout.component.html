@@ -1,12 +1,13 @@
 <router-outlet name="top"></router-outlet>
-<header>
+<header class="flashcards-header">
   <router-outlet name="header"></router-outlet>
 </header>
-<main>
-  <router-outlet name="breadcrumbs"></router-outlet>
+<main class="flashcards-main">
+  <router-outlet name="main-top"></router-outlet>
   <router-outlet></router-outlet>
+  <router-outlet name="main-bottom"></router-outlet>
 </main>
-<footer>
+<footer class="flashcards-footer">
   <router-outlet name="footer"></router-outlet>
 </footer>
 <router-outlet name="bottom"></router-outlet>

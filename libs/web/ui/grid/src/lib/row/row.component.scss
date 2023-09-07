@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &:not(.flashcards-no-gutter) {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+}

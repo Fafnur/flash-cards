@@ -1,6 +1,6 @@
 import { IsInt, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
-import { GroupChange, GroupCreate } from '@flash-cards/groups/common';
+import { GroupChange, GroupCreate } from '@flashcards/groups/common';
 
 export class GroupCreateForm implements GroupCreate {
   @IsNotEmpty()

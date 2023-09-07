@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { CardDto } from '@flash-cards/cards/common';
+import { CardDto } from '@flashcards/cards/common';
 
 import { CardEntity } from './card.entity';
 import { CardCreateForm } from './card.form';

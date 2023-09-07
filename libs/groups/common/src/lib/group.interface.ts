@@ -1,4 +1,4 @@
-import { Entity } from '@flash-cards/core';
+import { Entity } from '@flashcards/core';
 
 export interface GroupDto {
   readonly uuid: string;

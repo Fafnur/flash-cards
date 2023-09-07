@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@flashcards/auth/common": ["libs/auth/common/src/index.ts"],
+      "@flashcards/auth/services": ["libs/auth/services/src/index.ts"],
       "@flashcards/backend/auth": ["libs/backend/auth/src/index.ts"],
       "@flashcards/backend/cards": ["libs/backend/cards/src/index.ts"],
       "@flashcards/backend/core": ["libs/backend/core/src/index.ts"],

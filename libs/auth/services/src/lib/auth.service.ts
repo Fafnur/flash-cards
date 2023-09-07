@@ -1,26 +1,65 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, retry, tap, throwError, timer } from 'rxjs';
 
-import { AuthResponse } from '@flashcards/auth/common';
-import { LocalStorageAsync } from '@flashcards/core';
+import { AuthConfirm, AuthCredentials, AuthRegister, AuthResponse } from '@flashcards/auth/common';
+import { AuthApiService, AuthStorageService } from '@flashcards/auth/services';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthManager {
-  readonly key = 'auth';
+export class AuthService {
+  constructor(
+    private readonly authApiService: AuthApiService,
+    private readonly authStorageService: AuthStorageService,
+  ) {}
 
-  constructor(private readonly localStorageAsync: LocalStorageAsync<{ auth: AuthResponse }>) {}
+  login(credentials: AuthCredentials): Observable<void> {
+    return this.authApiService.login(credentials).pipe(
+      retry({
+        count: 3,
+        delay: (error, retryCount) => {
+          if ([400, 500].includes(error.status)) {
+            return throwError(() => error);
+          }
 
-  get(): Observable<AuthResponse | null> {
-    return this.localStorageAsync.getItem(this.key);
+          return timer(retryCount * 1000);
+        },
+      }),
+    );
   }
 
-  put(response: AuthResponse): void {
-    this.localStorageAsync.setItem(this.key, response);
+  logout(): void {
+    this.authStorageService.remove();
   }
 
-  remove(): void {
-    this.localStorageAsync.removeItem(this.key);
+  confirm(credentials: AuthConfirm): Observable<AuthResponse> {
+    return this.authApiService.confirm(credentials).pipe(
+      tap((auth) => this.authStorageService.set(auth)),
+      retry({
+        count: 3,
+        delay: (error, retryCount) => {
+          if ([400, 500].includes(error.status)) {
+            return throwError(() => error);
+          }
+
+          return timer(retryCount * 1000);
+        },
+      }),
+    );
+  }
+
+  register(register: AuthRegister): Observable<void> {
+    return this.authApiService.register(register).pipe(
+      retry({
+        count: 3,
+        delay: (error, retryCount) => {
+          if ([400, 500].includes(error.status)) {
+            return throwError(() => error);
+          }
+
+          return timer(retryCount * 1000);
+        },
+      }),
+    );
   }
 }

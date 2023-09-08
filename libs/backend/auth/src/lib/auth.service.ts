@@ -96,11 +96,13 @@ export class AuthService {
     }
     await this.authRepository.save(otp);
 
-    await this.mailerService.sendMail({
-      to: credentials.email,
-      // from: 'noreply@fafn.ru',
-      subject: 'Confirm code',
-      html: `<p>Ваш код подтверждения: ${code}</p>`,
-    });
+    if (process.env['NODE_ENV'] !== 'development') {
+      await this.mailerService.sendMail({
+        to: credentials.email,
+        // from: 'noreply@fafn.ru',
+        subject: 'Confirm code',
+        html: `<p>Ваш код подтверждения: ${code}</p>`,
+      });
+    }
   }
 }

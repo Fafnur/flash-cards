@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ApiRequestOptions, getApiRequestOptions, getUrlWithoutSlash } from './api.util';
@@ -14,20 +14,6 @@ export interface ApiConfig {
    */
   readonly host: string;
 }
-
-/**
- * Injection token for Navigation paths
- * @publicApi
- */
-export const API_CONFIG = new InjectionToken<Partial<ApiConfig>>('ApiConfig');
-
-/**
- * Default Api config
- * @publicApi
- */
-export const API_CONFIG_DEFAULT: ApiConfig = {
-  host: '',
-};
 
 /**
  * Service for http requests.
@@ -48,15 +34,10 @@ export class ApiService {
    */
   private readonly config: ApiConfig;
 
-  constructor(
-    private readonly httpClient: HttpClient,
-    @Optional() @Inject(API_CONFIG) config: Partial<ApiConfig> | null,
-  ) {
-    if (!config) {
-      console.warn('API_CONFIG not provided.');
-    }
-
-    this.config = { ...API_CONFIG_DEFAULT, ...config };
+  constructor(private readonly httpClient: HttpClient) {
+    this.config = {
+      host: process.env['NX_API_HOST'] ?? '',
+    };
   }
 
   /**

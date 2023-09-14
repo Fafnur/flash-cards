@@ -4,7 +4,7 @@ import { Observable, retry, tap, throwError, timer } from 'rxjs';
 import { AuthConfirm, AuthCredentials, AuthRegister, AuthResponse } from '@flashcards/auth/common';
 
 import { AuthApiService } from './auth-api.service';
-import { AuthStorageService } from './auth-storage.service';
+import { AuthStorage } from './auth.storage';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +12,11 @@ import { AuthStorageService } from './auth-storage.service';
 export class AuthService {
   constructor(
     private readonly authApiService: AuthApiService,
-    private readonly authStorageService: AuthStorageService,
+    private readonly authStorage: AuthStorage,
   ) {}
 
   get logged(): boolean {
-    return this.authStorageService.get() !== null;
+    return this.authStorage.get() !== null;
   }
 
   login(credentials: AuthCredentials): Observable<void> {
@@ -35,12 +35,12 @@ export class AuthService {
   }
 
   logout(): void {
-    this.authStorageService.remove();
+    this.authStorage.remove();
   }
 
   confirm(credentials: AuthConfirm): Observable<AuthResponse> {
     return this.authApiService.confirm(credentials).pipe(
-      tap((auth) => this.authStorageService.set(auth)),
+      tap((auth) => this.authStorage.set(auth)),
       retry({
         count: 3,
         delay: (error, retryCount) => {

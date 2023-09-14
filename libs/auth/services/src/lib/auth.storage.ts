@@ -6,7 +6,7 @@ import { LocalStorageSync } from '@flashcards/core';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthStorageService {
+export class AuthStorage {
   readonly key = 'auth';
 
   constructor(private readonly localStorageSync: LocalStorageSync<{ auth: AuthResponse }>) {}

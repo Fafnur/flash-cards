@@ -3,8 +3,8 @@ import { Observable, retry, tap, throwError, timer } from 'rxjs';
 
 import { AuthConfirm, AuthCredentials, AuthRegister, AuthResponse } from '@flashcards/auth/common';
 
-import { AuthApiService } from './auth-api.service';
 import { AuthStorage } from './auth.storage';
+import { AuthApiService } from './auth-api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,10 @@ export class AuthService {
 
   get logged(): boolean {
     return this.authStorage.get() !== null;
+  }
+
+  init(): void {
+    /* empty */
   }
 
   login(credentials: AuthCredentials): Observable<void> {
@@ -36,6 +40,7 @@ export class AuthService {
 
   logout(): void {
     this.authStorage.remove();
+    // TODO: navigate to login
   }
 
   confirm(credentials: AuthConfirm): Observable<AuthResponse> {

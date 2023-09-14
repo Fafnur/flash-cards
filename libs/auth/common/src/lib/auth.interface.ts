@@ -16,3 +16,5 @@ export interface AuthRegister {
   readonly lastname: string;
   readonly email: string;
 }
+
+export const AUTH_KEY = 'auth';

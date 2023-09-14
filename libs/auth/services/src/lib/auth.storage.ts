@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 
-import { AuthResponse } from '@flashcards/auth/common';
+import { AUTH_KEY, AuthResponse } from '@flashcards/auth/common';
 import { LocalStorageSync } from '@flashcards/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthStorage {
-  readonly key = 'auth';
-
   constructor(private readonly localStorageSync: LocalStorageSync<{ auth: AuthResponse }>) {}
 
   get(): AuthResponse | null {
-    return this.localStorageSync.getItem(this.key);
+    return this.localStorageSync.getItem(AUTH_KEY);
   }
 
   set(response: AuthResponse): void {
-    this.localStorageSync.setItem(this.key, response);
+    this.localStorageSync.setItem(AUTH_KEY, response);
   }
 
   remove(): void {
-    this.localStorageSync.removeItem(this.key);
+    this.localStorageSync.removeItem(AUTH_KEY);
   }
 }

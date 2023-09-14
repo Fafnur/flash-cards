@@ -5,9 +5,9 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { randomInt } from 'node:crypto';
 import { Repository } from 'typeorm';
 
-import { AuthConfirm, AuthCredentials, AuthResponse } from '@flashcards/auth/common';
+import { AuthConfirm, AuthCredentials, AuthRegister, AuthResponse } from '@flashcards/auth/common';
 import { UserService } from '@flashcards/backend/users';
-import { UserRegister, UserStatus } from '@flashcards/users/common';
+import { UserStatus } from '@flashcards/users/common';
 
 import { AuthEntity } from './auth.entity';
 
@@ -62,7 +62,7 @@ export class AuthService {
     };
   }
 
-  async register(payload: UserRegister): Promise<void> {
+  async register(payload: AuthRegister): Promise<void> {
     const user = await this.userService.findOneByEmail(payload.email);
 
     if (user) {
@@ -96,11 +96,13 @@ export class AuthService {
     }
     await this.authRepository.save(otp);
 
-    await this.mailerService.sendMail({
-      to: credentials.email,
-      // from: 'noreply@fafn.ru',
-      subject: 'Confirm code',
-      html: `<p>Ваш код подтверждения: ${code}</p>`,
-    });
+    if (process.env['NODE_ENV'] !== 'development') {
+      await this.mailerService.sendMail({
+        to: credentials.email,
+        // from: 'noreply@fafn.ru',
+        subject: 'Confirm code',
+        html: `<p>Ваш код подтверждения: ${code}</p>`,
+      });
+    }
   }
 }

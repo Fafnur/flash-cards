@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <flashcards-title i18n="Auth Login|Title">Sign in</flashcards-title>
+  <flashcards-auth-email [control]="form.controls.email"></flashcards-auth-email>
+  <flashcards-auth-code [control]="form.controls.code" *ngIf="sent"></flashcards-auth-code>
+  <div>
+    <button type="submit" mat-raised-button color="primary" i18n="Auth Login|Sign In Button" [disabled]="submitted">Sign in</button>
+  </div>
+  <p>
+    <a routerLink="/auth/register" i18n="Auth Login|Sign up">Sign up</a>
+  </p>
+</form>

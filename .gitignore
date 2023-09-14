@@ -54,8 +54,8 @@ junit.xml
 /apps/**/sitemap.xml
 .yarnrc
 yarn.lock
-/apps/**/routes/blog.routes.ts
-/apps/**/routes/*.routes.ts
+#/apps/**/routes/blog.routes.ts
+#/apps/**/routes/*.routes.ts
 libs/ui/categories/src/lib/categories.ts
 /keys
 /platforms

@@ -32,3 +32,9 @@ $light-theme: mat.define-light-theme(
 html[data-theme='light'] {
   @include mat.all-component-colors($light-theme);
 }
+
+// Fucking field size
+mat-form-field,
+.mat-mdc-form-field {
+  width: 100%;
+}

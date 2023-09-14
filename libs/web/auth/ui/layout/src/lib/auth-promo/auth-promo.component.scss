@@ -1,0 +1,26 @@
+@use 'libs/web/ui/grid/mixins' as device;
+
+:host {
+  display: block;
+
+  @include device.media-tablet() {
+    max-width: 25rem;
+  }
+
+  @include device.media-tablet-up() {
+    margin: auto 0 auto auto;
+  }
+}
+
+h2 {
+  color: var(--mat-toolbar-container-background-color);
+}
+
+p {
+  color: var(--mat-toolbar-container-background-color);
+
+  @include device.media-tablet-up() {
+    line-height: 1.5rem;
+    font-size: 1.15rem;
+  }
+}

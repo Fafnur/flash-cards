@@ -26,6 +26,7 @@
       "@flashcards/core": ["libs/core/src/index.ts"],
       "@flashcards/groups/common": ["libs/groups/common/src/index.ts"],
       "@flashcards/users/common": ["libs/users/common/src/index.ts"],
+      "@flashcards/users/services": ["libs/users/services/src/index.ts"],
       "@flashcards/web/auth/guards": ["libs/web/auth/guards/src/index.ts"],
       "@flashcards/web/auth/login/page": ["libs/web/auth/login/page/src/index.ts"],
       "@flashcards/web/auth/register/page": ["libs/web/auth/register/page/src/index.ts"],
@@ -37,7 +38,9 @@
       "@flashcards/web/ui/container": ["libs/web/ui/container/src/index.ts"],
       "@flashcards/web/ui/grid": ["libs/web/ui/grid/src/index.ts"],
       "@flashcards/web/ui/layout": ["libs/web/ui/layout/src/index.ts"],
-      "@flashcards/web/ui/title": ["libs/web/ui/title/src/index.ts"]
+      "@flashcards/web/ui/title": ["libs/web/ui/title/src/index.ts"],
+      "@flashcards/web/users/profile/page": ["libs/web/users/profile/page/src/index.ts"],
+      "@flashcards/web/users/ui/layout": ["libs/web/users/ui/layout/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

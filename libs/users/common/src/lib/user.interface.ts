@@ -20,3 +20,5 @@ export interface UserChange {
   readonly firstname: string;
   readonly lastname: string;
 }
+
+export const USERS_KEY = 'users';

@@ -60,7 +60,7 @@ export const LOCAL_DB_CONFIG = new InjectionToken<Partial<LocalDBConfig>>('LOCAL
 @Injectable({
   providedIn: 'root',
 })
-export class LocalDBService<K extends keyof S = never, S extends Record<string, string> = Record<string, string>> implements OnDestroy {
+export class LocalDBService<S extends Record<string, Entity> = Record<string, Entity>> implements OnDestroy {
   /**
    * Config for LocalDB
    * @private
@@ -126,7 +126,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
    *
    * @param storeName Store name
    */
-  getAll<T = Entity>(storeName: K): Observable<T[]> {
+  getAll<K extends keyof S>(storeName: K): Observable<S[K][]> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
         console.error(error, { storeName, operation: 'getAll' });
@@ -136,7 +136,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
         try {
           const transaction = database.transaction([storeName.toString()], 'readonly');
           const store = transaction.objectStore(storeName.toString());
-          const getRequest: IDBRequest<T[]> = store.getAll();
+          const getRequest: IDBRequest<S[K][]> = store.getAll();
 
           getRequest.onerror = () => onError(getRequest.error);
           getRequest.onsuccess = () => {
@@ -156,7 +156,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
    * @param storeName Store name
    * @param key Record id
    */
-  get<T = Entity>(storeName: K, key: string | number): Observable<T | null> {
+  get<K extends keyof S>(storeName: K, key: string | number): Observable<S[K] | null> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
         console.error(error, { storeName, operation: 'get' });
@@ -166,7 +166,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
         try {
           const transaction = database.transaction([storeName.toString()], 'readonly');
           const store = transaction.objectStore(storeName.toString());
-          const getRequest: IDBRequest<T> = store.get(key);
+          const getRequest: IDBRequest<S[K]> = store.get(key);
 
           getRequest.onerror = () => onError(getRequest.error);
           getRequest.onsuccess = () => {
@@ -186,7 +186,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
    * @param storeName Store name
    * @param record Record
    */
-  put<T>(storeName: K, record: T): Promise<void> {
+  put<K extends keyof S>(storeName: K, record: S[K]): Promise<void> {
     return new Promise((resolve, reject) => {
       const onError = (error: unknown) => {
         console.error(error, { storeName, operation: 'put' });
@@ -214,7 +214,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
    * @param storeName Store name
    * @param records Records
    */
-  putAll<T>(storeName: K, records: T[]): Promise<void> {
+  putAll<K extends keyof S>(storeName: K, records: S[K][]): Promise<void> {
     return new Promise((resolve, reject) => {
       const onError = (error: unknown) => {
         console.error(error, { storeName, operation: 'putAll' });
@@ -245,7 +245,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
    * @param storeName Store name
    * @param key Record id
    */
-  remove(storeName: K, key: string | number): Promise<void> {
+  remove<K extends keyof S>(storeName: K, key: string | number): Promise<void> {
     return new Promise((resolve, reject) => {
       const onError = (error: unknown) => {
         console.error(error, { storeName, operation: 'remove' });
@@ -271,7 +271,7 @@ export class LocalDBService<K extends keyof S = never, S extends Record<string, 
    * Remove all records from store
    * @param storeName Store name
    */
-  clear(storeName: K): Promise<void> {
+  clear<K extends keyof S>(storeName: K): Promise<void> {
     return new Promise((resolve, reject) => {
       const onError = (error: unknown) => {
         console.error(error, { storeName, operation: 'remove' });

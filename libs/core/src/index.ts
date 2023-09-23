@@ -17,3 +17,4 @@ export * from './lib/storages/storage';
 export * from './lib/types/entity.type';
 export * from './lib/utils/uuid.util';
 export * from './lib/visitor/visitor';
+export * from './lib/window/window.service';

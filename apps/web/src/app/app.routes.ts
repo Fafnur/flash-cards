@@ -34,13 +34,13 @@ export const appRoutes: Route[] = [
         loadChildren: () => import('./routes/auth.routes').then((modules) => modules.authRoutes),
       },
       {
-        path: 'permission-denied',
-        loadComponent: () =>
-          import('@flashcards/web/errors/permission-denied/page').then((modules) => modules.PermissionDeniedPageComponent),
+        path: 'users',
+        canActivate: [canLogged],
+        loadChildren: () => import('./routes/users.routes').then((modules) => modules.usersRoutes),
       },
       {
-        path: '**',
-        loadComponent: () => import('@flashcards/web/errors/not-found/page').then((modules) => modules.NotFoundPageComponent),
+        path: '',
+        loadChildren: () => import('./routes/errors.routes').then((modules) => modules.errorsRoutes),
       },
     ],
   },

@@ -1,7 +1,6 @@
 import { Route } from '@angular/router';
 
 import { canAuth, canLogged } from '@flashcards/web/auth/guards';
-import { FooterComponent } from '@flashcards/web/ui/footer';
 import { LayoutComponent } from '@flashcards/web/ui/layout';
 
 export const appRoutes: Route[] = [
@@ -14,16 +13,6 @@ export const appRoutes: Route[] = [
     path: '',
     component: LayoutComponent,
     children: [
-      // {
-      //   path: '',
-      //   component: HeaderComponent,
-      //   outlet: 'header',
-      // },
-      {
-        path: '',
-        component: FooterComponent,
-        outlet: 'footer',
-      },
       {
         path: 'dashboard',
         canActivate: [canLogged],

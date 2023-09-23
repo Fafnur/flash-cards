@@ -11,5 +11,9 @@ import { CopyrightComponent } from './copyright/copyright.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ContainerComponent, CopyrightComponent],
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'flashcards-footer',
+  },
 })
 export class FooterComponent {}

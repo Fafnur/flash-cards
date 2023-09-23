@@ -5,10 +5,11 @@ import { RouterOutlet } from '@angular/router';
 import { ContainerComponent } from '@flashcards/web/ui/container';
 import { BreakpointType, GridService } from '@flashcards/web/ui/grid';
 
+import { CopyrightComponent } from './copyright/copyright.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { MenuComponent } from './menu/menu.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { LogoComponent } from './logo/logo.component';
+import { NavComponent } from './nav/nav.component';
 
 @Component({
   selector: 'flashcards-layout',
@@ -25,9 +26,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AsyncPipe,
     ContainerComponent,
     FooterComponent,
-    MenuComponent,
     HeaderComponent,
-    SidebarComponent,
+    CopyrightComponent,
+    LogoComponent,
+    NavComponent,
   ],
 })
 export class LayoutComponent {

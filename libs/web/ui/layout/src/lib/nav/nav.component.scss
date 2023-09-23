@@ -1,45 +1,29 @@
-@use 'libs/web/ui/grid/mixins' as mixins;
+@use 'libs/web/ui/grid/mixins' as device;
 
 :host {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  height: 4rem;
 
-  @include mixins.media-tablet() {
+  @include device.media-tablet() {
     flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
   }
 }
 
 a {
-  width: 100%;
-  border-radius: 0;
-  padding: 1rem 0;
-
   display: flex;
-  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  text-decoration: none;
+  padding: 0.5rem;
 
   &:not(:first-child) {
-    border-left: 1px solid red;
-  }
-
-  @include mixins.media-tablet() {
-    border-left: none;
-    border-bottom: 1px solid red;
-
-    &:not(:first-child) {
-      border-left: none;
-    }
-
-    &:first-child {
-      border-top: 1px solid red;
-    }
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1;
+    border-left: 1px solid var(--mat-sidenav-container-text-color);
   }
 
   span {
@@ -56,8 +40,22 @@ a {
     color: red;
   }
 
-  @include mixins.media-web() {
-    padding: 1rem;
+  @include device.media-tablet() {
+    border-left: none;
+    border-bottom: 1px solid var(--mat-sidenav-container-text-color);
+    padding: 0.4rem;
+
+    &:not(:first-child) {
+      border-left: none;
+    }
+
+    &:first-child {
+      border-top: 1px solid var(--mat-sidenav-container-text-color);
+    }
+  }
+
+  @include device.media-web() {
+    padding: 0.5rem 1rem;
   }
 }
 
@@ -66,7 +64,7 @@ mat-icon {
   width: 1.5rem;
   height: 1.5rem;
 
-  @include mixins.media-tablet() {
+  @include device.media-tablet() {
     font-size: 1.75rem;
     width: 1.75rem;
     height: 1.75rem;

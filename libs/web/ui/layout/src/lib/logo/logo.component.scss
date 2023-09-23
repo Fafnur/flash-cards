@@ -42,7 +42,7 @@ span {
   font-weight: 700;
 
   @include device.media-tablet() {
-    font-size: 1rem;
+    font-size: 0.75rem;
     padding-top: 0.5rem;
     padding-left: 0;
     width: 60px;

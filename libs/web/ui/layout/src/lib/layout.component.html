@@ -1,32 +1,41 @@
 <ng-container [ngSwitch]="currentType$ | async">
   <ng-container *ngSwitchDefault>
-    <flashcards-header></flashcards-header>
-    <main>
-      <ng-container *ngTemplateOutlet="template"></ng-container>
-    </main>
-    <flashcards-menu></flashcards-menu>
+    <flashcards-header>
+      <flashcards-logo></flashcards-logo>
+    </flashcards-header>
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+    <flashcards-footer>
+      <flashcards-nav></flashcards-nav>
+    </flashcards-footer>
   </ng-container>
   <ng-container *ngSwitchCase="types.Tablet">
-    <flashcards-sidebar></flashcards-sidebar>
-    <main>
-      <ng-container *ngTemplateOutlet="template; context: { fluid: true }"></ng-container>
-    </main>
+    <flashcards-footer>
+      <flashcards-logo></flashcards-logo>
+      <flashcards-nav></flashcards-nav>
+      <flashcards-copyright [short]="true"></flashcards-copyright>
+    </flashcards-footer>
+    <ng-container *ngTemplateOutlet="template; context: { fluid: true }"></ng-container>
   </ng-container>
   <ng-container *ngSwitchCase="types.Web">
     <flashcards-header>
-      <flashcards-menu></flashcards-menu>
+      <flashcards-logo></flashcards-logo>
+      <flashcards-nav></flashcards-nav>
     </flashcards-header>
-    <main class="flashcards-main">
-      <ng-container *ngTemplateOutlet="template"></ng-container>
-    </main>
-    <flashcards-footer></flashcards-footer>
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+    <flashcards-footer>
+      <flashcards-container>
+        <flashcards-copyright></flashcards-copyright>
+      </flashcards-container>
+    </flashcards-footer>
   </ng-container>
 </ng-container>
 
 <ng-template #template let-fluid="fluid">
-  <router-outlet name="top"></router-outlet>
-  <flashcards-container [fluid]="fluid">
-    <router-outlet></router-outlet>
-  </flashcards-container>
-  <router-outlet name="bottom"></router-outlet>
+  <main class="flashcards-main">
+    <router-outlet name="top"></router-outlet>
+    <flashcards-container [fluid]="fluid">
+      <router-outlet></router-outlet>
+    </flashcards-container>
+    <router-outlet name="bottom"></router-outlet>
+  </main>
 </ng-template>

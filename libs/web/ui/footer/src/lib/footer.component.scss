@@ -1,0 +1,10 @@
+@use 'libs/web/ui/grid/mixins' as device;
+
+:host {
+  display: none;
+
+  @include device.media-web() {
+    display: block;
+    padding: 2rem 0;
+  }
+}

@@ -36,6 +36,7 @@
       "@flashcards/web/errors/not-found/page": ["libs/web/errors/not-found/page/src/index.ts"],
       "@flashcards/web/errors/permission-denied/page": ["libs/web/errors/permission-denied/page/src/index.ts"],
       "@flashcards/web/ui/container": ["libs/web/ui/container/src/index.ts"],
+      "@flashcards/web/ui/footer": ["libs/web/ui/footer/src/index.ts"],
       "@flashcards/web/ui/grid": ["libs/web/ui/grid/src/index.ts"],
       "@flashcards/web/ui/layout": ["libs/web/ui/layout/src/index.ts"],
       "@flashcards/web/ui/title": ["libs/web/ui/title/src/index.ts"],

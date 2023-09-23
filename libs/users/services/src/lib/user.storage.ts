@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { AuthResponse } from '@flashcards/auth/common';
+import { AUTH_KEY, AuthResponse } from '@flashcards/auth/common';
 import { LocalDBService, LocalStorageSync } from '@flashcards/core';
 import { User, USERS_KEY } from '@flashcards/users/common';
 
@@ -37,6 +37,6 @@ export class UserStorage {
   }
 
   private getUuid(): string | undefined {
-    return this.localStorageSync.getItem('auth')?.uuid;
+    return this.localStorageSync.getItem(AUTH_KEY)?.uuid;
   }
 }

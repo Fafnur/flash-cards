@@ -23,7 +23,13 @@ export class UserService {
   ) {}
 
   init(): void {
-    // TODO: Add restore user
+    this.userStorage
+      .get()
+      .pipe(
+        tap((user) => this.state$.next(user)),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe();
   }
 
   load(): void {

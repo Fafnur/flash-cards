@@ -26,4 +26,14 @@
   @include device.media-tablet() {
     height: 100vh;
   }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+    background-color: var(--mat-sidenav-container-background-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--mat-sidenav-container-text-color);
+  }
 }

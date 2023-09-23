@@ -1,0 +1,6 @@
+<a routerLinkActive="is-active" [attr.aria-label]="link.label" [routerLink]="link.route" *ngFor="let link of links">
+  <div>
+    <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
+    <span>{{ link.label }}</span>
+  </div>
+</a>

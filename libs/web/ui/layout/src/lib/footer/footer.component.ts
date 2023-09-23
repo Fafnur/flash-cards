@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ContainerComponent } from '@flashcards/web/ui/container';
 
-import { CopyrightComponent } from './copyright/copyright.component';
+import { CopyrightComponent } from '../copyright/copyright.component';
 
 @Component({
   selector: 'flashcards-footer',

@@ -15,7 +15,7 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: 'dashboard',
-        canActivate: [canLogged],
+        // canActivate: [canLogged],
         loadComponent: () => import('@flashcards/web/dashboard/page').then((modules) => modules.DashboardPageComponent),
       },
       {

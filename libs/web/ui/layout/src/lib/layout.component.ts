@@ -3,9 +3,12 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { ContainerComponent } from '@flashcards/web/ui/container';
-import { GridService } from '@flashcards/web/ui/grid';
+import { BreakpointType, GridService } from '@flashcards/web/ui/grid';
 
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './menu/menu.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'flashcards-layout',
@@ -13,11 +16,23 @@ import { FooterComponent } from './footer/footer.component';
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterOutlet, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, AsyncPipe, ContainerComponent, FooterComponent],
+  imports: [
+    RouterOutlet,
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
+    NgTemplateOutlet,
+    AsyncPipe,
+    ContainerComponent,
+    FooterComponent,
+    MenuComponent,
+    HeaderComponent,
+    SidebarComponent,
+  ],
 })
 export class LayoutComponent {
   private readonly gridService = inject(GridService);
 
   readonly currentType$ = this.gridService.currentType$;
-  readonly breakpoints = this.gridService.breakpoints;
+  readonly types = BreakpointType;
 }

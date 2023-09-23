@@ -1,21 +1,21 @@
 <ng-container [ngSwitch]="currentType$ | async">
   <ng-container *ngSwitchDefault>
-    <div>
-      <!--      <flashcards-header></flashcards-header>-->
-      <main>
-        <ng-container *ngTemplateOutlet="template"></ng-container>
-      </main>
-    </div>
-    <!--    <flashcards-menu></flashcards-menu>-->
+    <flashcards-header></flashcards-header>
+    <main>
+      <ng-container *ngTemplateOutlet="template"></ng-container>
+    </main>
+    <flashcards-menu></flashcards-menu>
   </ng-container>
-  <ng-container *ngSwitchCase="breakpoints.Tablet">
-    <!--    <flashcards-sidebar></flashcards-sidebar>-->
+  <ng-container *ngSwitchCase="types.Tablet">
+    <flashcards-sidebar></flashcards-sidebar>
     <main>
       <ng-container *ngTemplateOutlet="template; context: { fluid: true }"></ng-container>
     </main>
   </ng-container>
-  <ng-container *ngSwitchCase="breakpoints.Web">
-    <!--    <flashcards-header></flashcards-header>-->
+  <ng-container *ngSwitchCase="types.Web">
+    <flashcards-header>
+      <flashcards-menu></flashcards-menu>
+    </flashcards-header>
     <main class="flashcards-main">
       <ng-container *ngTemplateOutlet="template"></ng-container>
     </main>

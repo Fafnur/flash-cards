@@ -1,10 +1,6 @@
-@use 'libs/web/ui/grid/mixins' as device;
-
 :host {
-  display: none;
-
-  @include device.media-web() {
-    display: block;
-    padding: 2rem 0;
-  }
+  display: block;
+  padding: 2rem 0;
+  background-color: var(--mat-sidenav-container-background-color);
+  color: var(--mat-sidenav-container-text-color);
 }

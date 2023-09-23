@@ -1,0 +1,16 @@
+:host {
+  //box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--mat-sidenav-container-background-color);
+  color: var(--mat-sidenav-container-text-color);
+}
+
+.flashcards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  height: 4rem;
+}

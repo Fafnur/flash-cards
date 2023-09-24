@@ -14,7 +14,7 @@ import {
 } from '@nestjs/common';
 
 import { formExceptionFactory, JwtAuthGuard } from '@flashcards/backend/core';
-import { CardDto } from '@flashcards/cards/common';
+import { Card } from '@flashcards/cards/common';
 import { Entity } from '@flashcards/core';
 
 import { CardChangeForm, CardCreateForm } from './card.form';
@@ -26,8 +26,9 @@ export class CardController {
   constructor(private readonly service: CardService) {}
 
   @Get()
-  async load(@Request() req: { user: Entity }): Promise<CardDto[]> {
-    return await this.service.find(req.user.uuid);
+  async load(@Request() req: { user: Entity }): Promise<Card[]> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return await this.service.find(req.user.uuid).then((result) => result.map(({ group, ...cardDto }) => cardDto));
   }
 
   @Post()
@@ -37,7 +38,7 @@ export class CardController {
       exceptionFactory: formExceptionFactory,
     }),
   )
-  async create(@Request() req: { user: Entity }, @Body() form: CardCreateForm): Promise<CardDto> {
+  async create(@Request() req: { user: Entity }, @Body() form: CardCreateForm): Promise<Card> {
     return await this.service.create({
       ...form,
       user: req.user.uuid,
@@ -51,7 +52,7 @@ export class CardController {
       exceptionFactory: formExceptionFactory,
     }),
   )
-  async change(@Request() req: { user: Entity }, @Param() params: { uuid: string }, @Body() form: CardChangeForm): Promise<CardDto> {
+  async change(@Request() req: { user: Entity }, @Param() params: { uuid: string }, @Body() form: CardChangeForm): Promise<Card> {
     const card = await this.service.findOne(params.uuid);
     if (!card) {
       throw new BadRequestException(`Card #${params.uuid} not found`);
@@ -71,7 +72,7 @@ export class CardController {
   }
 
   @Post('sync')
-  async sync(@Request() req: { user: Entity }, @Body() groups: CardDto[]): Promise<CardDto[]> {
+  async sync(@Request() req: { user: Entity }, @Body() groups: Card[]): Promise<Card[]> {
     return await this.service.sync(req.user.uuid, groups);
   }
 }

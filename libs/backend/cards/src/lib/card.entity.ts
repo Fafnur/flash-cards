@@ -2,13 +2,13 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn,
 
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { GroupEntity } from '@flashcards/backend/groups';
-import { CardDto } from '@flashcards/cards/common';
+import { Card } from '@flashcards/cards/common';
 import { Group } from '@flashcards/groups/common';
 
 @Entity({
   name: 'cards',
 })
-export class CardEntity implements CardDto {
+export class CardEntity implements Card {
   @PrimaryColumn({ length: 36 })
   uuid!: string;
 
@@ -26,6 +26,9 @@ export class CardEntity implements CardDto {
 
   @Column()
   user!: string;
+
+  @Column({ name: 'repeated', type: 'json', default: '[]' })
+  repeated!: string[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: string;

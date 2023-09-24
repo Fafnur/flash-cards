@@ -1,20 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { ContainerComponent } from '@flashcards/web/ui/container';
-
 import { CopyrightComponent } from '../copyright/copyright.component';
+import { LogoComponent } from '../logo/logo.component';
+import { NavComponent } from '../nav/nav.component';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 
 @Component({
-  selector: 'flashcards-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
+  selector: 'flashcards-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
-    class: 'flashcards-footer',
+    class: 'flashcards-sidebar',
   },
-  imports: [ContainerComponent, CopyrightComponent, ThemeSwitcherComponent],
+  imports: [LogoComponent, ThemeSwitcherComponent, NavComponent, CopyrightComponent],
 })
-export class FooterComponent {}
+export class SidebarComponent {}

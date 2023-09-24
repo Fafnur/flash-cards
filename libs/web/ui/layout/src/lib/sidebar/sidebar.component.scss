@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--mat-sidenav-container-background-color);
+  color: var(--mat-sidenav-container-text-color);
+}

@@ -1,8 +1,16 @@
 @use 'libs/web/ui/grid/mixins' as device;
 
 :host {
-  display: flex;
-  flex-direction: column;
   background-color: var(--mat-sidenav-container-background-color);
   color: var(--mat-sidenav-container-text-color);
+}
+
+.flashcards-container {
+  display: flex;
+  flex-direction: column;
+
+  @include device.media-web() {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

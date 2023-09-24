@@ -5,11 +5,11 @@ import { RouterOutlet } from '@angular/router';
 import { ContainerComponent } from '@flashcards/web/ui/container';
 import { BreakpointType, GridService } from '@flashcards/web/ui/grid';
 
-import { CopyrightComponent } from './copyright/copyright.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { LogoComponent } from './logo/logo.component';
+import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'flashcards-layout',
@@ -27,14 +27,12 @@ import { NavComponent } from './nav/nav.component';
     ContainerComponent,
     FooterComponent,
     HeaderComponent,
-    CopyrightComponent,
-    LogoComponent,
     NavComponent,
+    SidebarComponent,
+    MainComponent,
   ],
 })
 export class LayoutComponent {
-  private readonly gridService = inject(GridService);
-
-  readonly currentType$ = this.gridService.currentType$;
+  readonly gridService = inject(GridService);
   readonly types = BreakpointType;
 }

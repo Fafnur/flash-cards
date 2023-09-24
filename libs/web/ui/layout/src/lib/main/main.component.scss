@@ -1,0 +1,23 @@
+@use 'libs/web/ui/grid/mixins' as device;
+
+:host {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-y: auto;
+  height: calc(100vh - 8rem);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--mat-toolbar-container-background-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--mat-sidenav-container-text-color);
+  }
+
+  @include device.media-tablet() {
+    height: 100vh;
+  }
+}

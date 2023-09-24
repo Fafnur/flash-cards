@@ -1,41 +1,28 @@
-<ng-container [ngSwitch]="currentType$ | async">
+<ng-container [ngSwitch]="gridService.currentType$ | async">
   <ng-container *ngSwitchDefault>
-    <flashcards-header>
-      <flashcards-logo></flashcards-logo>
-    </flashcards-header>
-    <ng-container *ngTemplateOutlet="template"></ng-container>
-    <flashcards-footer>
-      <flashcards-nav></flashcards-nav>
-    </flashcards-footer>
+    <flashcards-header></flashcards-header>
+    <ng-container *ngTemplateOutlet="main"></ng-container>
+    <flashcards-nav></flashcards-nav>
   </ng-container>
   <ng-container *ngSwitchCase="types.Tablet">
-    <flashcards-footer>
-      <flashcards-logo></flashcards-logo>
-      <flashcards-nav></flashcards-nav>
-      <flashcards-copyright [short]="true"></flashcards-copyright>
-    </flashcards-footer>
-    <ng-container *ngTemplateOutlet="template; context: { fluid: true }"></ng-container>
+    <flashcards-sidebar></flashcards-sidebar>
+    <ng-container *ngTemplateOutlet="main; context: { fluid: true }"></ng-container>
   </ng-container>
   <ng-container *ngSwitchCase="types.Web">
     <flashcards-header>
-      <flashcards-logo></flashcards-logo>
       <flashcards-nav></flashcards-nav>
     </flashcards-header>
-    <ng-container *ngTemplateOutlet="template"></ng-container>
-    <flashcards-footer>
-      <flashcards-container>
-        <flashcards-copyright></flashcards-copyright>
-      </flashcards-container>
-    </flashcards-footer>
+    <ng-container *ngTemplateOutlet="main"></ng-container>
+    <flashcards-footer></flashcards-footer>
   </ng-container>
 </ng-container>
 
-<ng-template #template let-fluid="fluid">
-  <main class="flashcards-main">
+<ng-template #main let-fluid="fluid">
+  <flashcards-main>
     <router-outlet name="top"></router-outlet>
     <flashcards-container [fluid]="fluid">
       <router-outlet></router-outlet>
     </flashcards-container>
     <router-outlet name="bottom"></router-outlet>
-  </main>
+  </flashcards-main>
 </ng-template>

@@ -27,10 +27,10 @@ $light-theme: mat.define-light-theme(
   )
 );
 
-@include mat.all-component-themes($dark-theme);
+@include mat.all-component-themes($light-theme);
 
-html[data-theme='light'] {
-  @include mat.all-component-colors($light-theme);
+html[data-theme='dark'] {
+  @include mat.all-component-colors($dark-theme);
 }
 
 // Fucking field size

@@ -1,5 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AsyncPipe, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { ContainerComponent } from '@flashcards/web/ui/container';
+import { BreakpointType, GridService } from '@flashcards/web/ui/grid';
+
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { MainComponent } from './main/main.component';
+import { NavComponent } from './nav/nav.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'flashcards-layout',
@@ -7,6 +17,22 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
+    NgTemplateOutlet,
+    AsyncPipe,
+    ContainerComponent,
+    FooterComponent,
+    HeaderComponent,
+    NavComponent,
+    SidebarComponent,
+    MainComponent,
+  ],
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  readonly gridService = inject(GridService);
+  readonly types = BreakpointType;
+}

@@ -1,0 +1,56 @@
+@use 'libs/web/ui/grid/mixins' as device;
+
+a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  align-items: center;
+  user-select: none;
+
+  @include device.media-tablet() {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @include device.media-web() {
+    flex-direction: row;
+  }
+}
+
+mat-icon {
+  display: block;
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+
+  @include device.media-tablet() {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  @include device.media-web() {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+span {
+  padding-left: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+
+  @include device.media-tablet() {
+    font-size: 0.75rem;
+    padding-top: 0.5rem;
+    padding-left: 0;
+    width: 60px;
+    text-align: center;
+  }
+
+  @include device.media-web() {
+    padding-left: 0.5rem;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,15 @@
+:host {
+  background-color: var(--mat-sidenav-container-background-color);
+  color: var(--mat-sidenav-container-text-color);
+}
+
+.flashcards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  height: 4rem;
+}

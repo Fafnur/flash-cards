@@ -1,13 +1,28 @@
-<router-outlet name="top"></router-outlet>
-<header class="flashcards-header">
-  <router-outlet name="header"></router-outlet>
-</header>
-<main class="flashcards-main">
-  <router-outlet name="main-top"></router-outlet>
-  <router-outlet></router-outlet>
-  <router-outlet name="main-bottom"></router-outlet>
-</main>
-<footer class="flashcards-footer">
-  <router-outlet name="footer"></router-outlet>
-</footer>
-<router-outlet name="bottom"></router-outlet>
+<ng-container [ngSwitch]="gridService.currentType$ | async">
+  <ng-container *ngSwitchDefault>
+    <flashcards-header></flashcards-header>
+    <ng-container *ngTemplateOutlet="main"></ng-container>
+    <flashcards-nav></flashcards-nav>
+  </ng-container>
+  <ng-container *ngSwitchCase="types.Tablet">
+    <flashcards-sidebar></flashcards-sidebar>
+    <ng-container *ngTemplateOutlet="main; context: { fluid: true }"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="types.Web">
+    <flashcards-header>
+      <flashcards-nav></flashcards-nav>
+    </flashcards-header>
+    <ng-container *ngTemplateOutlet="main"></ng-container>
+    <flashcards-footer></flashcards-footer>
+  </ng-container>
+</ng-container>
+
+<ng-template #main let-fluid="fluid">
+  <flashcards-main>
+    <router-outlet name="top"></router-outlet>
+    <flashcards-container [fluid]="fluid">
+      <router-outlet></router-outlet>
+    </flashcards-container>
+    <router-outlet name="bottom"></router-outlet>
+  </flashcards-main>
+</ng-template>

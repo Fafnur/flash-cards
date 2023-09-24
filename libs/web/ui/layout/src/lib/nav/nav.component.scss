@@ -1,0 +1,92 @@
+@use 'libs/web/ui/grid/mixins' as device;
+
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 4rem;
+
+  @include device.media-tablet() {
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+}
+
+.flashcards-state-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--mat-sidenav-container-text-color);
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+}
+
+.flashcards-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  text-decoration: none;
+  padding: 0.5rem;
+  position: relative;
+
+  &:not(:first-child) {
+    border-left: 1px solid var(--mat-sidenav-container-text-color);
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .flashcards-state-layer {
+      opacity: 0.16;
+    }
+  }
+
+  &.is-active .flashcards-state-layer {
+    opacity: 0.12;
+  }
+
+  @include device.media-tablet() {
+    border-left: none;
+    border-bottom: 1px solid var(--mat-sidenav-container-text-color);
+    padding: 0.4rem;
+
+    &:not(:first-child) {
+      border-left: none;
+    }
+
+    &:first-child {
+      border-top: 1px solid var(--mat-sidenav-container-text-color);
+    }
+  }
+
+  @include device.media-web() {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.flashcards-label {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.mat-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  @include device.media-tablet() {
+    font-size: 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}

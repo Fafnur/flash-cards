@@ -1,6 +1,4 @@
-import { Entity } from '@flashcards/core';
-
-export interface GroupDto {
+export interface Group {
   readonly uuid: string;
   readonly name: string;
   readonly createdAt: string;
@@ -8,22 +6,10 @@ export interface GroupDto {
   readonly user: string;
   readonly order: number;
   readonly cover?: string;
-  readonly cards: Entity[];
 }
 
-export interface Group extends Omit<GroupDto, 'cards'> {
-  readonly cards: string[];
-}
+export type GroupCreate = Omit<Group, 'createdAt' | 'updatedAt'>;
 
-export interface GroupCreate {
-  readonly uuid: string;
-  readonly name: string;
-  readonly user: string;
-  readonly cover?: string;
-}
+export type GroupChange = Partial<Omit<Group, 'createdAt' | 'updatedAt' | 'uuid' | 'user' | 'groupUuid'>>;
 
-export interface GroupChange {
-  readonly name?: string;
-  readonly cover?: string;
-  readonly order?: number;
-}
+export const GROUPS_KEY = 'groups';

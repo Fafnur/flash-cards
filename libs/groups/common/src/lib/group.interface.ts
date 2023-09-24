@@ -6,10 +6,12 @@ export interface Group {
   readonly user: string;
   readonly order: number;
   readonly cover?: string;
+  readonly original?: string;
+  readonly translation?: string;
 }
 
-export type GroupCreate = Omit<Group, 'createdAt' | 'updatedAt'>;
+export type GroupCreate = Omit<Group, 'createdAt' | 'updatedAt' | 'order'>;
 
-export type GroupChange = Partial<Omit<Group, 'createdAt' | 'updatedAt' | 'uuid' | 'user' | 'groupUuid'>>;
+export type GroupChange = Partial<Omit<Group, 'createdAt' | 'updatedAt' | 'uuid' | 'user'>>;
 
 export const GROUPS_KEY = 'groups';

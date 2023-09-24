@@ -24,6 +24,12 @@ export class GroupEntity implements Group {
   @Column()
   order!: number;
 
+  @Column({ length: 256, nullable: true })
+  original!: string;
+
+  @Column({ length: 256, nullable: true })
+  translation!: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: string;
 

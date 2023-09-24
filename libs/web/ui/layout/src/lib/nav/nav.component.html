@@ -1,4 +1,5 @@
-<a routerLinkActive="is-active" [attr.aria-label]="link.label" [routerLink]="link.route" *ngFor="let link of links">
+<a class="flashcards-link" routerLinkActive="is-active" [attr.aria-label]="link.label" [routerLink]="link.route" *ngFor="let link of links">
   <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
-  <span>{{ link.label }}</span>
+  <span class="flashcards-label">{{ link.label }}</span>
+  <span class="flashcards-state-layer"></span>
 </a>

@@ -23,6 +23,7 @@
       "@flashcards/backend/groups": ["libs/backend/groups/src/index.ts"],
       "@flashcards/backend/users": ["libs/backend/users/src/index.ts"],
       "@flashcards/cards/common": ["libs/cards/common/src/index.ts"],
+      "@flashcards/cards/services": ["libs/cards/services/src/index.ts"],
       "@flashcards/core": ["libs/core/src/index.ts"],
       "@flashcards/groups/common": ["libs/groups/common/src/index.ts"],
       "@flashcards/users/common": ["libs/users/common/src/index.ts"],

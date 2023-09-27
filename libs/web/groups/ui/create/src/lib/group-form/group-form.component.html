@@ -1,6 +1,8 @@
-<form action="">
+<form [formGroup]="form" (ngSubmit)="onCreate()">
   <h2 mat-dialog-title>Create a new group</h2>
-  <mat-dialog-content> </mat-dialog-content>
+  <mat-dialog-content>
+    <flashcards-group-name [control]="form.controls.name"></flashcards-group-name>
+  </mat-dialog-content>
   <div mat-dialog-actions>
     <button type="button" mat-button mat-dialog-close>Cancel</button>
     <button type="submit" mat-button color="primary">Create</button>

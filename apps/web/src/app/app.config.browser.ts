@@ -1,14 +1,14 @@
 import 'hammerjs';
 
 import { ApplicationConfig, mergeApplicationConfig } from '@angular/core';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { initVisitorUuid } from '@flashcards/core';
 
 import { appConfig } from './app.config';
 
 const browserConfig: ApplicationConfig = {
-  providers: [provideNoopAnimations()],
+  providers: [provideAnimations()],
 };
 
 export const config = mergeApplicationConfig(appConfig, browserConfig);

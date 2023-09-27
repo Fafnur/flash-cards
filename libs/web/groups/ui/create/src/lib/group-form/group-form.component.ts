@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+
+import { GroupNameComponent } from '@flashcards/web/groups/ui/fields';
 
 @Component({
   selector: 'flashcards-group-form',
@@ -9,6 +11,24 @@ import { MatDialogModule } from '@angular/material/dialog';
   styleUrls: ['./group-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, MatDialogModule, MatButtonModule],
+  imports: [ReactiveFormsModule, MatDialogModule, MatButtonModule, GroupNameComponent],
 })
-export class GroupFormComponent {}
+export class GroupFormComponent {
+  readonly form = new FormGroup({
+    name: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.maxLength(1)] }),
+  });
+
+  submitted = false;
+
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+
+  onCreate(): void {
+    this.form.markAllAsTouched();
+
+    if (!this.submitted) {
+      this.submitted = true;
+
+      this.changeDetectorRef.markForCheck();
+    }
+  }
+}

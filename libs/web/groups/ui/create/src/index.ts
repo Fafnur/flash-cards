@@ -1,1 +1,1 @@
-export * from './lib/web-groups-ui-create.module';
+export * from './lib/group-create.component';

@@ -2,8 +2,8 @@ import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, tap } from 'rxjs';
 
-import { Card, CardCreate } from '@flashcards/cards/common';
 import { isNotNullOrUndefined } from '@flashcards/core';
+import { Group, GroupCreate } from '@flashcards/groups/common';
 
 import { GroupApi } from './group.api';
 import { GroupStorage } from './group.storage';
@@ -12,22 +12,18 @@ import { GroupStorage } from './group.storage';
   providedIn: 'root',
 })
 export class GroupService {
-  private readonly state$ = new BehaviorSubject<Card[] | null>(null);
+  private readonly state$ = new BehaviorSubject<Group[] | null>(null);
 
-  readonly cards$ = this.state$.asObservable().pipe(isNotNullOrUndefined());
+  readonly groups$ = this.state$.asObservable().pipe(isNotNullOrUndefined());
 
   constructor(
-    private readonly cardApi: GroupApi,
-    private readonly cardStorage: GroupStorage,
+    private readonly groupApi: GroupApi,
+    private readonly groupStorage: GroupStorage,
     private readonly destroyRef: DestroyRef,
   ) {}
 
   init(): void {
-    // TODO: Add init
-  }
-
-  load(): void {
-    this.cardStorage
+    this.groupStorage
       .getAll()
       .pipe(
         tap((cards) => this.state$.next(cards)),
@@ -36,16 +32,20 @@ export class GroupService {
       .subscribe();
   }
 
-  create(cardCreate: CardCreate): void {
+  load(): void {
+    // TODO: Add load
+  }
+
+  create(groupCreate: GroupCreate): void {
     const createdAt = new Date().toISOString();
-    const card: Card = {
-      ...cardCreate,
-      repeated: [],
+    const group: Group = {
+      ...groupCreate,
       createdAt,
       updatedAt: createdAt,
+      order: this.state$.getValue()?.length ?? 0,
     };
-    void this.cardStorage.set(card);
-    this.state$.next([...(this.state$.value ?? []), card]);
+    void this.groupStorage.set(group);
+    this.state$.next([...(this.state$.value ?? []), group]);
   }
 
   sync(): void {}

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { GroupNameComponent } from '@flashcards/web/groups/ui/fields';
+import { GroupNameComponent, GroupLangComponent } from '@flashcards/web/groups/ui/fields';
 
 @Component({
   selector: 'flashcards-group-form',
@@ -11,11 +11,13 @@ import { GroupNameComponent } from '@flashcards/web/groups/ui/fields';
   styleUrls: ['./group-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, MatDialogModule, MatButtonModule, GroupNameComponent],
+  imports: [ReactiveFormsModule, MatDialogModule, MatButtonModule, GroupNameComponent, GroupLangComponent],
 })
 export class GroupFormComponent {
   readonly form = new FormGroup({
     name: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.maxLength(1)] }),
+    original: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    translation: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
 
   submitted = false;

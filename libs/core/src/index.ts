@@ -2,6 +2,7 @@ export * from './lib/api/api.service';
 export * from './lib/api/api.util';
 export * from './lib/api/interceptors/provide';
 export * from './lib/form/extract-touched.directive';
+export * from './lib/lang/lang';
 export * from './lib/localdb/localdb.service';
 export * from './lib/operators/extract.operator';
 export * from './lib/operators/not-null-or-undefined.operator';

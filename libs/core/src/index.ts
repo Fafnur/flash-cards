@@ -16,6 +16,8 @@ export * from './lib/storages/session/session-storage-native';
 export * from './lib/storages/session/session-storage-sync';
 export * from './lib/storages/storage';
 export * from './lib/types/entity.type';
+export * from './lib/types/form.type';
+export * from './lib/types/nullable.type';
 export * from './lib/utils/uuid.util';
 export * from './lib/visitor/visitor';
 export * from './lib/window/window.service';

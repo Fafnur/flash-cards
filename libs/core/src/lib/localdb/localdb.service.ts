@@ -104,7 +104,7 @@ export class LocalDBService<S extends Record<string, Entity> = Record<string, En
           const stores = this.config.storeNames.filter((name) => !allStores.includes(name));
 
           for (const store of stores) {
-            database.createObjectStore(store, { keyPath: 'id' });
+            database.createObjectStore(store, { keyPath: this.config.keyPath });
           }
         } catch (error) {
           onError(error);

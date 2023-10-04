@@ -44,6 +44,7 @@ export class GroupService {
       updatedAt: createdAt,
       order: this.state$.getValue()?.length ?? 0,
     };
+    console.log(group);
     void this.groupStorage.set(group);
     this.state$.next([...(this.state$.value ?? []), group]);
   }

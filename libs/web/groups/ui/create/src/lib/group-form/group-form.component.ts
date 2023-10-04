@@ -28,7 +28,7 @@ export class GroupFormComponent {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly authService: AuthService,
     private readonly groupService: GroupService,
-    private readonly matDialogRef: MatDialogRef<never>,
+    private readonly matDialogRef: MatDialogRef<GroupFormComponent>,
   ) {}
 
   onCreate(): void {
@@ -36,7 +36,11 @@ export class GroupFormComponent {
 
     if (this.form.valid) {
       this.changeDetectorRef.markForCheck();
-      this.groupService.create({ ...this.form.getRawValue(), user: this.authService.uuid, uuid: uuidv4() });
+      this.groupService.create({
+        ...this.form.getRawValue(),
+        user: this.authService.uuid,
+        uuid: uuidv4(),
+      });
       this.matDialogRef.close();
     }
   }

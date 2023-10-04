@@ -20,13 +20,7 @@ export class CardService {
     private readonly cardApi: CardApi,
     private readonly cardStorage: CardStorage,
     private readonly destroyRef: DestroyRef,
-  ) {}
-
-  init(): void {
-    // TODO: Add init
-  }
-
-  load(): void {
+  ) {
     this.cardStorage
       .getAll()
       .pipe(
@@ -34,6 +28,14 @@ export class CardService {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
+  }
+
+  init(): void {
+    // TODO: Add init
+  }
+
+  load(): void {
+    // TODO: Add load
   }
 
   create(cardCreate: CardCreate): void {

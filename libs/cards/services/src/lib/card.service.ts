@@ -1,6 +1,6 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
 
 import { Card, CardCreate } from '@flashcards/cards/common';
 import { isNotNullOrUndefined } from '@flashcards/core';
@@ -15,6 +15,12 @@ export class CardService {
   private readonly state$ = new BehaviorSubject<Card[] | null>(null);
 
   readonly cards$ = this.state$.asObservable().pipe(isNotNullOrUndefined());
+
+  readonly cardsByGroup$ = (groupUuid: string) =>
+    this.state$.asObservable().pipe(
+      isNotNullOrUndefined(),
+      map((cards) => cards.filter((card) => card.groupUuid === groupUuid)),
+    );
 
   constructor(
     private readonly cardApi: CardApi,

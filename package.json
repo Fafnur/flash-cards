@@ -63,10 +63,10 @@
     "@angular/compiler-cli": "^16.2.8",
     "@angular/language-service": "^16.2.8",
     "@angular/localize": "16.2.8",
-    "@nestjs/common": "^10.2.7",
-    "@nestjs/core": "^10.2.7",
     "@nestjs-modules/mailer": "^1.9.1",
+    "@nestjs/common": "^10.2.7",
     "@nestjs/config": "^3.1.1",
+    "@nestjs/core": "^10.2.7",
     "@nestjs/jwt": "^10.1.1",
     "@nestjs/passport": "^10.0.2",
     "@nestjs/platform-express": "^10.2.7",
@@ -141,4 +141,3 @@
     "os": false
   }
 }
-

@@ -3,12 +3,12 @@ import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateC
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { CardEntity } from '@flashcards/backend/cards';
 import { Card } from '@flashcards/cards/common';
-import { GroupDto } from '@flashcards/groups/common';
+import { Group } from '@flashcards/groups/common';
 
 @Entity({
   name: 'groups',
 })
-export class GroupEntity implements GroupDto {
+export class GroupEntity implements Group {
   @PrimaryColumn({ length: 36 })
   uuid!: string;
 
@@ -23,6 +23,12 @@ export class GroupEntity implements GroupDto {
 
   @Column()
   order!: number;
+
+  @Column({ length: 256, nullable: true })
+  original!: string;
+
+  @Column({ length: 256, nullable: true })
+  translation!: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: string;

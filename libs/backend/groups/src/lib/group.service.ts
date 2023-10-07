@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { GroupDto } from '@flashcards/groups/common';
+import { Group } from '@flashcards/groups/common';
 
 import { GroupEntity } from './group.entity';
 import { GroupCreateForm } from './group.form';
@@ -41,7 +41,7 @@ export class GroupService {
     return this.repository.save(group);
   }
 
-  async sync(owner: string, groups: GroupDto[]): Promise<GroupEntity[]> {
+  async sync(owner: string, groups: Group[]): Promise<GroupEntity[]> {
     await this.repository.save(groups.map((group) => ({ ...group, cards: undefined })));
 
     return this.find(owner);

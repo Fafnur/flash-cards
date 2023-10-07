@@ -20,6 +20,16 @@ export class GroupCreateForm implements GroupCreate {
   @Length(1, 256)
   @IsOptional()
   cover?: string;
+
+  @IsNotEmpty()
+  @Length(1, 256)
+  @IsOptional()
+  original!: string;
+
+  @IsNotEmpty()
+  @Length(1, 256)
+  @IsOptional()
+  translation!: string;
 }
 
 export class GroupChangeForm implements GroupChange {
@@ -35,4 +45,14 @@ export class GroupChangeForm implements GroupChange {
   @IsInt()
   @IsOptional()
   order?: number;
+
+  @IsNotEmpty()
+  @Length(1, 256)
+  @IsOptional()
+  original!: string;
+
+  @IsNotEmpty()
+  @Length(1, 256)
+  @IsOptional()
+  translation!: string;
 }

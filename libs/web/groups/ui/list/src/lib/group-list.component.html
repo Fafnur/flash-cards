@@ -1,0 +1,3 @@
+<div *ngFor="let group of groupService.groups$ | async; trackBy: trackByEntity">
+  {{ group.name }}
+</div>

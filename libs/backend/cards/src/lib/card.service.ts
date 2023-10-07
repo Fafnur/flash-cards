@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { CardDto } from '@flashcards/cards/common';
+import { Card } from '@flashcards/cards/common';
 
 import { CardEntity } from './card.entity';
 import { CardCreateForm } from './card.form';
@@ -35,7 +35,7 @@ export class CardService {
     return this.repository.save(card);
   }
 
-  async sync(owner: string, cards: CardDto[]): Promise<CardEntity[]> {
+  async sync(owner: string, cards: Card[]): Promise<CardEntity[]> {
     await this.repository.save(cards);
 
     return this.find(owner);

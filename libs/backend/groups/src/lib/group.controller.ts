@@ -15,7 +15,7 @@ import {
 
 import { formExceptionFactory, JwtAuthGuard } from '@flashcards/backend/core';
 import { Entity } from '@flashcards/core';
-import { GroupDto } from '@flashcards/groups/common';
+import { Group } from '@flashcards/groups/common';
 
 import { GroupChangeForm, GroupCreateForm } from './group.form';
 import { GroupService } from './group.service';
@@ -32,7 +32,7 @@ export class GroupController {
       exceptionFactory: formExceptionFactory,
     }),
   )
-  async create(@Request() req: { user: Entity }, @Body() form: GroupCreateForm): Promise<GroupDto> {
+  async create(@Request() req: { user: Entity }, @Body() form: GroupCreateForm): Promise<Group> {
     return this.service.create({
       ...form,
       user: req.user.uuid,
@@ -46,8 +46,8 @@ export class GroupController {
       exceptionFactory: formExceptionFactory,
     }),
   )
-  async change(@Request() req: { user: Entity }, @Param() params: { uuid: string }, @Body() form: GroupChangeForm): Promise<GroupDto> {
-    const group = (await this.service.findOne(params.uuid)) as GroupDto;
+  async change(@Request() req: { user: Entity }, @Param() params: { uuid: string }, @Body() form: GroupChangeForm): Promise<Group> {
+    const group = (await this.service.findOne(params.uuid)) as Group;
     if (!group) {
       throw new BadRequestException(`Group #${params.uuid} not found`);
     }
@@ -56,7 +56,7 @@ export class GroupController {
   }
 
   @Get()
-  async load(@Request() req: { user: Entity }): Promise<GroupDto[]> {
+  async load(@Request() req: { user: Entity }): Promise<Group[]> {
     return this.service.find(req.user.uuid);
   }
 
@@ -71,7 +71,7 @@ export class GroupController {
   }
 
   @Post('sync')
-  async sync(@Request() req: { user: Entity }, @Body() groups: GroupDto[]): Promise<GroupDto[]> {
+  async sync(@Request() req: { user: Entity }, @Body() groups: Group[]): Promise<Group[]> {
     return this.service.sync(req.user.uuid, groups);
   }
 }

@@ -1,0 +1,53 @@
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+
+import { isNotNullOrUndefined } from '@flashcards/core';
+import { Group, GroupCreate } from '@flashcards/groups/common';
+
+import { GroupApi } from './group.api';
+import { GroupStorage } from './group.storage';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GroupService {
+  private readonly state$ = new BehaviorSubject<Group[] | null>(null);
+
+  readonly groups$: Observable<Group[]> = this.state$.asObservable().pipe(isNotNullOrUndefined());
+
+  constructor(
+    private readonly groupApi: GroupApi,
+    private readonly groupStorage: GroupStorage,
+    private readonly destroyRef: DestroyRef,
+  ) {
+    this.groupStorage
+      .getAll()
+      .pipe(
+        tap((cards) => this.state$.next(cards)),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe();
+  }
+
+  init(): void {}
+
+  load(): void {
+    // TODO: Add load
+  }
+
+  create(groupCreate: GroupCreate): void {
+    const createdAt = new Date().toISOString();
+    const group: Group = {
+      ...groupCreate,
+      createdAt,
+      updatedAt: createdAt,
+      order: this.state$.getValue()?.length ?? 0,
+    };
+    console.log(group);
+    void this.groupStorage.set(group);
+    this.state$.next([...(this.state$.value ?? []), group]);
+  }
+
+  sync(): void {}
+}

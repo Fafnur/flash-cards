@@ -33,6 +33,7 @@
   text-decoration: none;
   padding: 0.5rem;
   position: relative;
+  user-select: none;
 
   &:not(:first-child) {
     border-left: 1px solid var(--mat-sidenav-container-text-color);

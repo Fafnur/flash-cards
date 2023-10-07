@@ -36,7 +36,7 @@ export class UserStorage {
     }
   }
 
-  private getUuid(): string | undefined {
+  getUuid(): string | undefined {
     return this.localStorageSync.getItem(AUTH_KEY)?.uuid;
   }
 }

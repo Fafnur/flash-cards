@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
+import { IsArray, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
 import { CardChange, CardCreate } from '@flashcards/cards/common';
 
@@ -37,19 +37,23 @@ export class CardCreateForm implements CardCreate {
 export class CardChangeForm implements CardChange {
   @Length(1, 256)
   @IsOptional()
-  original!: string;
+  original?: string;
 
   @Length(1, 256)
   @IsOptional()
-  translation!: string;
+  translation?: string;
 
   @IsString()
   @Length(36, 36)
   @IsOptional()
-  groupUuid!: string;
+  groupUuid?: string;
 
   @IsString()
   @Length(1, 256)
   @IsOptional()
   cover?: string;
+
+  @IsArray()
+  @IsOptional()
+  repeated?: string[];
 }

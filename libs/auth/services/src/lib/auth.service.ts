@@ -18,6 +18,9 @@ export class AuthService {
   get logged(): boolean {
     return this.authStorage.get() !== null;
   }
+  get uuid(): string {
+    return this.authStorage.get()?.uuid ?? 'unknown';
+  }
 
   init(): void {
     /* empty */

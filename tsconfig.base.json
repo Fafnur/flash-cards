@@ -24,6 +24,7 @@
       "@flashcards/backend/users": ["libs/backend/users/src/index.ts"],
       "@flashcards/cards/common": ["libs/cards/common/src/index.ts"],
       "@flashcards/cards/services": ["libs/cards/services/src/index.ts"],
+      "@flashcards/cards/ui/shared": ["libs/cards/ui/shared/src/index.ts"],
       "@flashcards/core": ["libs/core/src/index.ts"],
       "@flashcards/groups/common": ["libs/groups/common/src/index.ts"],
       "@flashcards/groups/services": ["libs/groups/services/src/index.ts"],

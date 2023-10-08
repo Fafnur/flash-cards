@@ -1,8 +1,8 @@
-<mat-card>
+<mat-card routerLink="/">
   <mat-card-header>
     <mat-card-title>{{ group.name }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p>123</p>
+    <div *ngIf="group | getCards | async; let cards">{{ cards.length }}</div>
   </mat-card-content>
 </mat-card>

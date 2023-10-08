@@ -61,6 +61,12 @@
       "style": "scss",
       "changeDetection": "OnPush",
       "standalone": true
+    },
+    "@nx/angular:pipe": {
+      "standalone": true
+    },
+    "@schematics/angular:pipe": {
+      "standalone": true
     }
   },
   "defaultProject": "web"

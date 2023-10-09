@@ -1,1 +1,5 @@
-<flashcards-group-card [group]="group" *ngFor="let group of groupService.groups$ | async; trackBy: trackByEntity"></flashcards-group-card>
+<flashcards-group-card
+  [action]="action"
+  [group]="group"
+  *ngFor="let group of groupService.groups$ | async; trackBy: trackByEntity"
+></flashcards-group-card>

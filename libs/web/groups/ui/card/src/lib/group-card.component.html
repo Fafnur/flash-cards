@@ -1,4 +1,4 @@
-<mat-card routerLink="/">
+<mat-card [routerLink]="['/', 'groups', group.uuid, action]">
   <mat-card-header>
     <mat-card-title>{{ group.name }}</mat-card-title>
   </mat-card-header>

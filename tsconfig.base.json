@@ -39,6 +39,7 @@
       "@flashcards/web/dictionary/page": ["libs/web/dictionary/page/src/index.ts"],
       "@flashcards/web/errors/not-found/page": ["libs/web/errors/not-found/page/src/index.ts"],
       "@flashcards/web/errors/permission-denied/page": ["libs/web/errors/permission-denied/page/src/index.ts"],
+      "@flashcards/web/groups/edit/page": ["libs/web/groups/edit/page/src/index.ts"],
       "@flashcards/web/groups/ui/card": ["libs/web/groups/ui/card/src/index.ts"],
       "@flashcards/web/groups/ui/create": ["libs/web/groups/ui/create/src/index.ts"],
       "@flashcards/web/groups/ui/fields": ["libs/web/groups/ui/fields/src/index.ts"],

@@ -25,8 +25,13 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'users',
-        canActivate: [canLogged],
+        // canActivate: [canLogged],
         loadChildren: () => import('./routes/users.routes').then((modules) => modules.usersRoutes),
+      },
+      {
+        path: 'groups',
+        // canActivate: [canLogged],
+        loadChildren: () => import('./routes/groups.routes').then((modules) => modules.groupsRoutes),
       },
     ],
   },

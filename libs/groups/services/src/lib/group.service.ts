@@ -1,6 +1,6 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 
 import { isNotNullOrUndefined } from '@flashcards/core';
 import { Group, GroupCreate } from '@flashcards/groups/common';
@@ -15,6 +15,12 @@ export class GroupService {
   private readonly state$ = new BehaviorSubject<Group[] | null>(null);
 
   readonly groups$: Observable<Group[]> = this.state$.asObservable().pipe(isNotNullOrUndefined());
+
+  readonly group$ = (uuid: string): Observable<Group | undefined> =>
+    this.state$.asObservable().pipe(
+      isNotNullOrUndefined(),
+      map((state) => state.find((group) => group.uuid === uuid)),
+    );
 
   constructor(
     private readonly groupApi: GroupApi,

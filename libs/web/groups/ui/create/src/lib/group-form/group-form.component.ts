@@ -21,7 +21,6 @@ export class GroupFormComponent {
     name: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     original: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     translation: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-    user: new FormControl<string>('1', { nonNullable: true, validators: [Validators.required] }),
   });
 
   constructor(

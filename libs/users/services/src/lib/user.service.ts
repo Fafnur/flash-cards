@@ -2,7 +2,7 @@ import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, tap } from 'rxjs';
 
-import { AuthStorage } from '@flashcards/auth/services';
+import { AuthService } from '@flashcards/auth/services';
 import { isNotNullOrUndefined } from '@flashcards/core';
 import { User } from '@flashcards/users/common';
 
@@ -18,21 +18,29 @@ export class UserService {
   readonly user$ = this.state$.asObservable().pipe(isNotNullOrUndefined());
 
   constructor(
-    private readonly authStorage: AuthStorage,
+    private readonly authService: AuthService,
     private readonly userApiService: UserApiService,
     private readonly userStorage: UserStorage,
     private readonly destroyRef: DestroyRef,
-  ) {}
+  ) {
+    this.authService.logged$.pipe(tap(() => this.load())).subscribe();
+  }
 
   get uuid(): string {
-    return this.authStorage.get()?.uuid ?? 'unknown';
+    return this.authService.uuid;
   }
 
   init(): void {
     this.userStorage
       .get(this.uuid)
       .pipe(
-        tap((user) => this.state$.next(user)),
+        tap((user) => {
+          if (user) {
+            this.state$.next(user);
+          } else {
+            this.load();
+          }
+        }),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();

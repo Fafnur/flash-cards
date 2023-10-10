@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, retry, tap, throwError, timer } from 'rxjs';
+import { Observable, ReplaySubject, retry, tap, throwError, timer } from 'rxjs';
 
 import { AuthConfirm, AuthCredentials, AuthRegister, AuthResponse } from '@flashcards/auth/common';
 
@@ -10,6 +10,10 @@ import { AuthApiService } from './auth-api.service';
   providedIn: 'root',
 })
 export class AuthService {
+  private readonly loggedAction$ = new ReplaySubject<void>(1);
+
+  readonly logged$ = this.loggedAction$.asObservable();
+
   constructor(
     private readonly authApiService: AuthApiService,
     private readonly authStorage: AuthStorage,
@@ -18,6 +22,7 @@ export class AuthService {
   get logged(): boolean {
     return this.authStorage.get() !== null;
   }
+
   get uuid(): string {
     return this.authStorage.get()?.uuid ?? 'unknown';
   }

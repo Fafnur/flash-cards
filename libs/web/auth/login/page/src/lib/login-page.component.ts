@@ -3,13 +3,14 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef } fro
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink } from '@angular/router';
-import { catchError, EMPTY, finalize, tap } from 'rxjs';
+import { catchError, EMPTY, finalize, Observable, tap } from 'rxjs';
 
+import { AuthResponse } from '@flashcards/auth/common';
 import { AuthService } from '@flashcards/auth/services';
 import { AuthCodeComponent, AuthEmailComponent } from '@flashcards/web/auth/ui/fields';
 import { TitleComponent } from '@flashcards/web/ui/title';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'flashcards-login-page',
@@ -54,16 +55,21 @@ export class LoginPageComponent {
 
       this.changeDetectorRef.markForCheck();
 
-      this.authService
-        .login(this.form.getRawValue())
+      const formData = this.form.getRawValue();
+      const request$: Observable<AuthResponse | void> = this.sent ? this.authService.confirm(formData) : this.authService.login(formData);
+
+      request$
         .pipe(
-          tap(() => {
+          tap((data) => {
             this.sent = true;
             this.changeDetectorRef.markForCheck();
+
+            if (data) {
+              // TODO: Redirect
+            }
           }),
           catchError(() => {
-            this.form.controls.email.setErrors({ unknown: true });
-            this.form.controls.email.markAllAsTouched();
+            this.form.controls.code.setErrors({ server: true });
 
             return EMPTY;
           }),

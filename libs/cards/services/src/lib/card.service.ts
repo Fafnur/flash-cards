@@ -1,9 +1,9 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, map, tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 import { Card, CardCreate } from '@flashcards/cards/common';
-import { isNotNullOrUndefined } from '@flashcards/core';
+import { EntityService, isNotNullOrUndefined } from '@flashcards/core';
 
 import { CardApi } from './card.api';
 import { CardStorage } from './card.storage';
@@ -11,15 +11,13 @@ import { CardStorage } from './card.storage';
 @Injectable({
   providedIn: 'root',
 })
-export class CardService {
-  private readonly state$ = new BehaviorSubject<Card[] | null>(null);
-
-  readonly cards$ = this.state$.asObservable().pipe(isNotNullOrUndefined());
+export class CardService extends EntityService<Card> {
+  readonly cards$ = this.state$.asObservable().pipe(map((state) => Object.values(state ?? {})));
 
   readonly cardsByGroup$ = (groupUuid: string) =>
     this.state$.asObservable().pipe(
       isNotNullOrUndefined(),
-      map((cards) => cards.filter((card) => card.groupUuid === groupUuid)),
+      map((cards) => Object.values(cards).filter((card) => card.groupUuid === groupUuid)),
     );
 
   constructor(
@@ -27,17 +25,29 @@ export class CardService {
     private readonly cardStorage: CardStorage,
     private readonly destroyRef: DestroyRef,
   ) {
+    super();
+  }
+
+  init(userUuid: string): void {
     this.cardStorage
       .getAll()
       .pipe(
-        tap((cards) => this.state$.next(cards)),
+        tap((cards) =>
+          this.state$.next(
+            cards
+              .filter((card) => card.user === userUuid)
+              .reduce(
+                (acc, current) => ({
+                  ...acc,
+                  [current.uuid]: current,
+                }),
+                {},
+              ),
+          ),
+        ),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
-  }
-
-  init(): void {
-    // TODO: Add init
   }
 
   load(): void {
@@ -53,7 +63,7 @@ export class CardService {
       updatedAt: createdAt,
     };
     void this.cardStorage.set(card);
-    this.state$.next([...(this.state$.value ?? []), card]);
+    this.add(card);
   }
 
   sync(): void {}

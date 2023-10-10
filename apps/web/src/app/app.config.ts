@@ -1,8 +1,11 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 
+import { CardService } from '@flashcards/cards/services';
 import { httpInterceptorProviders, LOCAL_DB_CONFIG, LocalDBConfig } from '@flashcards/core';
+import { GroupService } from '@flashcards/groups/services';
+import { UserService } from '@flashcards/users/services';
 
 import { appRoutes } from './app.routes';
 
@@ -25,6 +28,21 @@ export const appConfig: ApplicationConfig = {
         keyPath: 'uuid',
         version: 1,
       } as Partial<LocalDBConfig>,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (userService: UserService, groupService: GroupService, cardService: CardService) => {
+        return () => {
+          userService.init();
+          const uuid = userService.uuid;
+          if (uuid) {
+            groupService.init(uuid);
+            cardService.init(uuid);
+          }
+        };
+      },
+      multi: true,
+      deps: [UserService, GroupService, CardService],
     },
     // {
     //   provide: APP_INITIALIZER,

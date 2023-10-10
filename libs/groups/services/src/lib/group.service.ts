@@ -26,26 +26,29 @@ export class GroupService extends EntityService<Group> {
     private readonly destroyRef: DestroyRef,
   ) {
     super();
+  }
+
+  init(userUuid: string): void {
     this.groupStorage
       .getAll()
       .pipe(
-        tap((cards) =>
+        tap((groups) =>
           this.state$.next(
-            cards.reduce(
-              (acc, current) => ({
-                ...acc,
-                [current.uuid]: current,
-              }),
-              {},
-            ),
+            groups
+              .filter((group) => group.user === userUuid)
+              .reduce(
+                (acc, current) => ({
+                  ...acc,
+                  [current.uuid]: current,
+                }),
+                {},
+              ),
           ),
         ),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }
-
-  init(): void {}
 
   load(): void {
     // TODO: Add load

@@ -1,11 +1,11 @@
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
+import { isNotNullOrUndefined } from '@flashcards/core';
+import { Group, GroupChange } from '@flashcards/groups/common';
 import { GroupService } from '@flashcards/groups/services';
 import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
-import { AsyncPipe } from '@angular/common';
-import { Observable, tap } from 'rxjs';
-import { Group, GroupChange } from '@flashcards/groups/common';
-import { isNotNullOrUndefined } from '@flashcards/core';
 
 @Component({
   selector: 'flashcards-group-edit-page',
@@ -23,7 +23,7 @@ export class GroupEditPageComponent implements OnInit {
   group$!: Observable<Group>;
 
   ngOnInit(): void {
-    this.group$ = this.groupService.group$(this.uuid).pipe(isNotNullOrUndefined(), tap(console.log));
+    this.group$ = this.groupService.group$(this.uuid).pipe(isNotNullOrUndefined());
   }
 
   onChanged(group: GroupChange): void {

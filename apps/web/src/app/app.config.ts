@@ -1,6 +1,6 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 
 import { httpInterceptorProviders, LOCAL_DB_CONFIG, LocalDBConfig } from '@flashcards/core';
 
@@ -15,6 +15,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
         scrollPositionRestoration: 'enabled',
       }),
+      withComponentInputBinding(),
     ),
     provideHttpClient(withInterceptors(httpInterceptorProviders)),
     {

@@ -10,6 +10,7 @@ export const canGroup: CanActivateFn = (route) => {
 
   const { uuid } = route.params;
 
+  console.log(uuid);
   if (!uuid) {
     return false;
   }

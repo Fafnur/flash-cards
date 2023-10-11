@@ -1,7 +1,9 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { Observable } from 'rxjs';
 
+import { GetCardsPipe } from '@flashcards/cards/ui/shared';
 import { isNotNullOrUndefined } from '@flashcards/core';
 import { Group, GroupChange } from '@flashcards/groups/common';
 import { GroupService } from '@flashcards/groups/services';
@@ -13,7 +15,7 @@ import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
   styleUrls: ['./group-edit-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [GroupFormComponent, AsyncPipe],
+  imports: [NgIf, GroupFormComponent, AsyncPipe, GetCardsPipe, MatCardModule],
 })
 export class GroupEditPageComponent implements OnInit {
   @Input() uuid!: string;

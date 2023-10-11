@@ -7,6 +7,7 @@ import { GetCardsPipe } from '@flashcards/cards/ui/shared';
 import { isNotNullOrUndefined } from '@flashcards/core';
 import { Group, GroupChange } from '@flashcards/groups/common';
 import { GroupService } from '@flashcards/groups/services';
+import { CardsTableComponent } from '@flashcards/web/cards/ui/table';
 import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
 
 @Component({
@@ -15,7 +16,7 @@ import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
   styleUrls: ['./group-edit-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, GroupFormComponent, AsyncPipe, GetCardsPipe, MatCardModule],
+  imports: [NgIf, GroupFormComponent, AsyncPipe, GetCardsPipe, MatCardModule, CardsTableComponent],
 })
 export class GroupEditPageComponent implements OnInit {
   @Input() uuid!: string;

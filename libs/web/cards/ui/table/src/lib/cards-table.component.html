@@ -1,0 +1,4 @@
+<ul *ngIf="group | getCards | async; let cards">
+  <li *ngFor="let card of cards; trackBy: trackByFn">{{ card.uuid }}</li>
+  <li>Add card</li>
+</ul>

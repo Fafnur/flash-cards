@@ -7,7 +7,7 @@ import { Card, CardChange } from '@flashcards/cards/common';
 import { CardOriginalComponent, CardTranslationComponent } from '@flashcards/web/cards/ui/fields';
 
 @Component({
-  selector: 'flashcards-group-form',
+  selector: 'flashcards-card-form',
   templateUrl: './card-form.component.html',
   styleUrls: ['./card-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,7 +20,7 @@ export class CardFormComponent implements OnInit {
     translation: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
   });
 
-  @Input() set group(card: Card | null | undefined) {
+  @Input() set card(card: Card | null | undefined) {
     if (card) {
       this.form.patchValue(card);
     }

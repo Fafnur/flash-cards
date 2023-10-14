@@ -1,6 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <flashcards-group-name [control]="form.controls.name"></flashcards-group-name>
-  <flashcards-group-lang label="Original language" [control]="form.controls.original"></flashcards-group-lang>
-  <flashcards-group-lang label="Translation" [control]="form.controls.translation"></flashcards-group-lang>
+  <flashcards-card-original [control]="form.controls.original"></flashcards-card-original>
+  <flashcards-card-translation [control]="form.controls.translation"></flashcards-card-translation>
   <ng-content></ng-content>
 </form>

@@ -1,4 +1,7 @@
-<ul *ngIf="group | getCards | async; let cards">
-  <li *ngFor="let card of cards; trackBy: trackByFn">{{ card.uuid }}</li>
-  <li>Add card</li>
-</ul>
+<ng-container *ngIf="group | getCards | async; let cards">
+  <ng-container *ngFor="let card of cards; trackBy: trackByFn">
+    <flashcards-card-form [card]="card"></flashcards-card-form>
+    <mat-divider></mat-divider>
+  </ng-container>
+  <flashcards-card-form></flashcards-card-form>
+</ng-container>

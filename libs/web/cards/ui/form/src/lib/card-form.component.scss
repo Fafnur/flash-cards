@@ -2,6 +2,11 @@
 
 :host {
   display: flex;
+  flex-direction: row;
+}
+
+form {
+  display: flex;
   flex-direction: column;
   width: 100%;
   gap: 8px;

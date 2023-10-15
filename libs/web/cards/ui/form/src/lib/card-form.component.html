@@ -1,5 +1,7 @@
-<flashcards-card-original [control]="form.controls.original"></flashcards-card-original>
-<flashcards-card-translation [control]="form.controls.translation"></flashcards-card-translation>
-<button mat-icon-button (click)="onRemove()">
+<form (swipeleft)="onRemoving()" (swiperight)="onBack()" [@checked]="removing ? 'on' : 'off'">
+  <flashcards-card-original [control]="form.controls.original"></flashcards-card-original>
+  <flashcards-card-translation [control]="form.controls.translation"></flashcards-card-translation>
+</form>
+<button mat-icon-button (click)="onRemove()" *ngIf="removing">
   <mat-icon>close</mat-icon>
 </button>

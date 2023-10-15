@@ -23,3 +23,4 @@ export * from './lib/types/nullable.type';
 export * from './lib/utils/uuid.util';
 export * from './lib/visitor/visitor';
 export * from './lib/window/window.service';
+export * from './lib/hammer/hammer.config';

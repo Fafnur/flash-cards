@@ -1,3 +1,4 @@
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -16,6 +17,18 @@ import { CardOriginalComponent, CardTranslationComponent } from '@flashcards/web
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [NgIf, ReactiveFormsModule, MatButtonModule, CardTranslationComponent, CardOriginalComponent, MatIconModule],
+  animations: [
+    trigger('checked', [
+      state('on', style({ transform: 'translateX(-10px)' })),
+      state('off', style({ transform: 'translateX(0)' })),
+      transition('off => on', [
+        animate('100ms', keyframes([style({ transform: 'translateX(0)' }), style({ transform: 'translateX(-10px)' })])),
+      ]),
+      transition('on => off', [
+        animate('100ms', keyframes([style({ transform: 'translateX(-10px)' }), style({ transform: 'translateX(0)' })])),
+      ]),
+    ]),
+  ],
 })
 export class CardFormComponent implements OnInit {
   readonly form = new FormGroup({
@@ -35,6 +48,8 @@ export class CardFormComponent implements OnInit {
   @Output() submitted = new EventEmitter<CardNew>();
   @Output() changed = new EventEmitter<CardChange>();
   @Output() removed = new EventEmitter<string>();
+
+  removing = false;
 
   get hasCard(): boolean {
     return !!this.form.controls.uuid.value;
@@ -59,6 +74,14 @@ export class CardFormComponent implements OnInit {
 
   onRemove(): void {
     this.removed.emit(this.form.controls.uuid.value as string);
+  }
+
+  onRemoving(): void {
+    this.removing = true;
+  }
+
+  onBack(): void {
+    this.removing = false;
   }
 
   onFocus(): void {

@@ -1,9 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { tap } from 'rxjs';
 
-import { Card, CardChange } from '@flashcards/cards/common';
+import { Card, CardChange, CardNew } from '@flashcards/cards/common';
+import { uuidv4 } from '@flashcards/core';
 import { CardOriginalComponent, CardTranslationComponent } from '@flashcards/web/cards/ui/fields';
 
 @Component({
@@ -12,13 +15,16 @@ import { CardOriginalComponent, CardTranslationComponent } from '@flashcards/web
   styleUrls: ['./card-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, CardTranslationComponent, CardOriginalComponent],
+  imports: [NgIf, ReactiveFormsModule, MatButtonModule, CardTranslationComponent, CardOriginalComponent, MatIconModule],
 })
 export class CardFormComponent implements OnInit {
   readonly form = new FormGroup({
+    uuid: new FormControl<string>('', { nonNullable: true, validators: [] }),
     original: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     translation: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
   });
+
+  @ViewChild(CardTranslationComponent, { static: true }) translation!: CardTranslationComponent;
 
   @Input() set card(card: Card | null | undefined) {
     if (card) {
@@ -26,24 +32,36 @@ export class CardFormComponent implements OnInit {
     }
   }
 
-  @Output() submitted = new EventEmitter<CardChange & { original: string; translation: string }>();
+  @Output() submitted = new EventEmitter<CardNew>();
   @Output() changed = new EventEmitter<CardChange>();
+  @Output() removed = new EventEmitter<string>();
+
+  get hasCard(): boolean {
+    return !!this.form.controls.uuid.value;
+  }
 
   ngOnInit(): void {
     this.form.valueChanges
       .pipe(
         tap(() => {
-          this.changed.emit(this.form.getRawValue());
+          if (this.hasCard) {
+            this.changed.emit(this.form.getRawValue() as CardChange);
+          } else if (this.form.valid) {
+            const uuid = uuidv4();
+            this.submitted.emit({ ...this.form.getRawValue(), uuid });
+            this.translation.blur();
+            this.form.reset();
+          }
         }),
       )
       .subscribe();
   }
 
-  onSubmit(): void {
-    this.form.markAllAsTouched();
+  onRemove(): void {
+    this.removed.emit(this.form.controls.uuid.value as string);
+  }
 
-    if (this.form.valid) {
-      this.submitted.emit(this.form.getRawValue());
-    }
+  onFocus(): void {
+    this.translation.focus();
   }
 }

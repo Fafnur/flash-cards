@@ -2,11 +2,15 @@ import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
 
-import { Card, CardCreate } from '@flashcards/cards/common';
+import { Card, CardChange, CardCreate } from '@flashcards/cards/common';
 import { EntityService, isNotNullOrUndefined } from '@flashcards/core';
 
 import { CardApi } from './card.api';
 import { CardStorage } from './card.storage';
+
+export function sortComparer(a: Card, b: Card): number {
+  return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+}
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +21,11 @@ export class CardService extends EntityService<Card> {
   readonly cardsByGroup$ = (groupUuid: string) =>
     this.state$.asObservable().pipe(
       isNotNullOrUndefined(),
-      map((cards) => Object.values(cards).filter((card) => card.groupUuid === groupUuid)),
+      map((cards) =>
+        Object.values(cards)
+          .filter((card) => card.groupUuid === groupUuid)
+          .sort(sortComparer),
+      ),
     );
 
   constructor(
@@ -62,9 +70,35 @@ export class CardService extends EntityService<Card> {
       createdAt,
       updatedAt: createdAt,
     };
-    void this.cardStorage.set(card);
-    this.add(card);
+
+    this.update(card);
+  }
+
+  change(uuid: string, cardChange: CardChange): void {
+    const cardLast = this.state[uuid];
+
+    if (!cardLast) {
+      return;
+    }
+
+    this.update({ ...cardLast, ...cardChange, updatedAt: new Date().toISOString() });
+  }
+
+  remove(uuid: string): void {
+    const cardLast = this.state[uuid];
+
+    if (!cardLast) {
+      return;
+    }
+
+    void this.cardStorage.remove(uuid);
+    this.delete(uuid);
   }
 
   sync(): void {}
+
+  private update(card: Card): void {
+    void this.cardStorage.set(card);
+    this.add(card);
+  }
 }

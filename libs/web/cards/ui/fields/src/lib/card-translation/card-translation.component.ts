@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 
@@ -24,4 +24,13 @@ import { ExtractTouchedDirective } from '@flashcards/core';
 })
 export class CardTranslationComponent {
   @Input() control!: FormControl<string>;
+  @ViewChild('input', { static: true }) inputElementRef!: ElementRef<HTMLInputElement>;
+
+  focus(): void {
+    this.inputElementRef.nativeElement.focus();
+  }
+
+  blur(): void {
+    this.inputElementRef.nativeElement.blur();
+  }
 }

@@ -20,4 +20,12 @@ export class EntityService<T extends Entity = Entity> {
     state[entity.uuid] = entity;
     this.state$.next(state);
   }
+
+  delete(entity: T | string): void {
+    const state = this.state$.getValue() ?? {};
+    const uuid = typeof entity === 'string' ? entity : entity.uuid;
+
+    delete state[uuid];
+    this.state$.next(state);
+  }
 }

@@ -10,8 +10,14 @@ export interface Card {
   readonly cover?: string;
 }
 
+export interface CardNew {
+  readonly uuid: string;
+  readonly original: string;
+  readonly translation: string;
+}
+
 export type CardCreate = Omit<Card, 'createdAt' | 'updatedAt' | 'repeated'>;
 
-export type CardChange = Partial<Omit<Card, 'createdAt' | 'updatedAt' | 'uuid' | 'user' | 'groupUuid'>>;
+export type CardChange = Partial<Omit<Card, 'createdAt' | 'updatedAt' | 'user' | 'groupUuid'>>;
 
 export const CARDS_KEY = 'cards';

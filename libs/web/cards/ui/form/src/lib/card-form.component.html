@@ -1,5 +1,5 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <flashcards-card-original [control]="form.controls.original"></flashcards-card-original>
-  <flashcards-card-translation [control]="form.controls.translation"></flashcards-card-translation>
-  <ng-content></ng-content>
-</form>
+<flashcards-card-original [control]="form.controls.original"></flashcards-card-original>
+<flashcards-card-translation [control]="form.controls.translation"></flashcards-card-translation>
+<button mat-icon-button (click)="onRemove()">
+  <mat-icon>close</mat-icon>
+</button>

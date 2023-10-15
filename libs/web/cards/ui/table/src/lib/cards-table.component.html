@@ -1,7 +1,7 @@
-<ng-container *ngIf="group | getCards | async; let cards">
+<ng-container *ngIf="cardsByGroup$ | async; let cards">
   <ng-container *ngFor="let card of cards; trackBy: trackByFn">
-    <flashcards-card-form [card]="card"></flashcards-card-form>
+    <flashcards-card-form #cardForm [card]="card" (changed)="onChanged($event)" (removed)="onRemoved($event)"></flashcards-card-form>
     <mat-divider></mat-divider>
   </ng-container>
-  <flashcards-card-form></flashcards-card-form>
 </ng-container>
+<flashcards-card-form (submitted)="onSubmitted($event)" (changed)="onChanged($event)" (removed)="onRemoved($event)"></flashcards-card-form>

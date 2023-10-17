@@ -5,8 +5,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink } from '@angular/router';
-import { catchError, EMPTY, finalize, tap } from 'rxjs';
+import { catchError, EMPTY, finalize, Observable, tap } from 'rxjs';
 
+import { AuthResponse } from '@flashcards/auth/common';
 import { AuthService } from '@flashcards/auth/services';
 import { AuthCodeComponent, AuthEmailComponent, AuthFirstnameComponent, AuthLastnameComponent } from '@flashcards/web/auth/ui/fields';
 import { TitleComponent } from '@flashcards/web/ui/title';
@@ -58,48 +59,33 @@ export class RegisterPageComponent {
 
       this.changeDetectorRef.markForCheck();
 
-      if (this.sent) {
-        this.authService
-          .confirm(this.form.getRawValue())
-          .pipe(
-            tap(() => {
-              this.sent = true;
-              this.changeDetectorRef.markForCheck();
-            }),
-            catchError(() => {
-              this.form.controls.code.setErrors({ server: true });
+      const formData = this.form.getRawValue();
+      const request$: Observable<AuthResponse | void> = this.sent
+        ? this.authService.confirm(formData)
+        : this.authService.register(formData);
 
-              return EMPTY;
-            }),
-            finalize(() => {
-              this.submitted = false;
-              this.changeDetectorRef.markForCheck();
-            }),
-            takeUntilDestroyed(this.destroyRef),
-          )
-          .subscribe();
-      } else {
-        this.authService
-          .register(this.form.getRawValue())
-          .pipe(
-            tap(() => {
-              this.sent = true;
-              this.changeDetectorRef.markForCheck();
-            }),
-            catchError(() => {
-              this.form.controls.email.setErrors({ unknown: true });
-              this.form.controls.email.markAllAsTouched();
+      request$
+        .pipe(
+          tap((data) => {
+            this.sent = true;
+            this.changeDetectorRef.markForCheck();
 
-              return EMPTY;
-            }),
-            finalize(() => {
-              this.submitted = false;
-              this.changeDetectorRef.markForCheck();
-            }),
-            takeUntilDestroyed(this.destroyRef),
-          )
-          .subscribe();
-      }
+            if (data) {
+              // TODO: Redirect
+            }
+          }),
+          catchError(() => {
+            this.form.controls.code.setErrors({ server: true });
+
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.submitted = false;
+            this.changeDetectorRef.markForCheck();
+          }),
+          takeUntilDestroyed(this.destroyRef),
+        )
+        .subscribe();
     } else {
       // TODO: Scroll to error
     }

@@ -1,9 +1,9 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 
-import { isNotNullOrUndefined } from '@flashcards/core';
-import { Group, GroupCreate } from '@flashcards/groups/common';
+import { EntityService, isNotNullOrUndefined } from '@flashcards/core';
+import { Group, GroupChange, GroupCreate } from '@flashcards/groups/common';
 
 import { GroupApi } from './group.api';
 import { GroupStorage } from './group.storage';
@@ -11,26 +11,44 @@ import { GroupStorage } from './group.storage';
 @Injectable({
   providedIn: 'root',
 })
-export class GroupService {
-  private readonly state$ = new BehaviorSubject<Group[] | null>(null);
+export class GroupService extends EntityService<Group> {
+  readonly groups$: Observable<Group[]> = this.state$.asObservable().pipe(map((state) => Object.values(state ?? {})));
 
-  readonly groups$: Observable<Group[]> = this.state$.asObservable().pipe(isNotNullOrUndefined());
+  readonly group$ = (uuid: string): Observable<Group | undefined> =>
+    this.state$.asObservable().pipe(
+      isNotNullOrUndefined(),
+      map((state) => Object.values(state).find((group) => group.uuid === uuid)),
+    );
 
   constructor(
     private readonly groupApi: GroupApi,
     private readonly groupStorage: GroupStorage,
     private readonly destroyRef: DestroyRef,
   ) {
+    super();
+  }
+
+  init(userUuid: string): void {
     this.groupStorage
       .getAll()
       .pipe(
-        tap((cards) => this.state$.next(cards)),
+        tap((groups) =>
+          this.state$.next(
+            groups
+              .filter((group) => group.user === userUuid)
+              .reduce(
+                (acc, current) => ({
+                  ...acc,
+                  [current.uuid]: current,
+                }),
+                {},
+              ),
+          ),
+        ),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }
-
-  init(): void {}
 
   load(): void {
     // TODO: Add load
@@ -42,12 +60,26 @@ export class GroupService {
       ...groupCreate,
       createdAt,
       updatedAt: createdAt,
-      order: this.state$.getValue()?.length ?? 0,
+      order: this.entities.length ?? 0,
     };
-    console.log(group);
-    void this.groupStorage.set(group);
-    this.state$.next([...(this.state$.value ?? []), group]);
+
+    this.update(group);
+  }
+
+  change(uuid: string, groupChange: GroupChange): void {
+    const groupLast = this.state[uuid];
+
+    if (!groupLast) {
+      return;
+    }
+
+    this.update({ ...groupLast, ...groupChange, updatedAt: new Date().toISOString() });
   }
 
   sync(): void {}
+
+  private update(group: Group): void {
+    void this.groupStorage.set(group);
+    this.add(group);
+  }
 }

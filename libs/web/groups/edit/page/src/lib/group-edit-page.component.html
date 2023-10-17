@@ -1,0 +1,14 @@
+<mat-card *ngIf="group$ | async; let group">
+  <mat-card-header>
+    <mat-card-title>Edit {{ group.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <flashcards-group-form [group]="group" (changed)="onChanged($event)"></flashcards-group-form>
+  </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>Cards</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <flashcards-cards-table [group]="group"></flashcards-cards-table>
+  </mat-card-content>
+</mat-card>

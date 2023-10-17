@@ -1,9 +1,9 @@
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 
 import { trackByEntity } from '@flashcards/core';
-import { Group } from '@flashcards/groups/common';
 import { GroupService } from '@flashcards/groups/services';
+import { GroupCardComponent } from '@flashcards/web/groups/ui/card';
 
 @Component({
   selector: 'flashcards-group-list',
@@ -11,9 +11,11 @@ import { GroupService } from '@flashcards/groups/services';
   styleUrls: ['./group-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgForOf, AsyncPipe],
+  imports: [NgForOf, AsyncPipe, GroupCardComponent],
 })
 export class GroupListComponent {
   readonly groupService = inject(GroupService);
-  readonly trackByEntity = trackByEntity<Group>;
+  readonly trackByEntity = trackByEntity;
+
+  @Input() action: 'view' | 'edit' = 'view';
 }

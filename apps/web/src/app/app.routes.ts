@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 
+import { canInit } from '@flashcards/guards';
 import { canAuth, canLogged } from '@flashcards/web/auth/guards';
 import { LayoutComponent } from '@flashcards/web/ui/layout';
 
@@ -12,16 +13,23 @@ export const appRoutes: Route[] = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [canLogged, canInit],
     children: [
       {
         path: 'dashboard',
-        // canActivate: [canLogged],
         loadComponent: () => import('@flashcards/web/dashboard/page').then((modules) => modules.DashboardPageComponent),
       },
       {
+        path: 'dictionary',
+        loadComponent: () => import('@flashcards/web/dictionary/page').then((modules) => modules.DictionaryPageComponent),
+      },
+      {
         path: 'users',
-        canActivate: [canLogged],
         loadChildren: () => import('./routes/users.routes').then((modules) => modules.usersRoutes),
+      },
+      {
+        path: 'groups',
+        loadChildren: () => import('./routes/groups.routes').then((modules) => modules.groupsRoutes),
       },
     ],
   },

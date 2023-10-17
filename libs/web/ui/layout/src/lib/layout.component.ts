@@ -2,7 +2,7 @@ import { AsyncPipe, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { ContainerComponent } from '@flashcards/web/ui/container';
+import { ContainerComponent, MobileNoGutterDirective } from '@flashcards/web/ui/container';
 import { BreakpointType, GridService } from '@flashcards/web/ui/grid';
 
 import { FooterComponent } from './footer/footer.component';
@@ -30,6 +30,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NavComponent,
     SidebarComponent,
     MainComponent,
+    MobileNoGutterDirective,
   ],
 })
 export class LayoutComponent {

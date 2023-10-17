@@ -1,0 +1,17 @@
+@use 'libs/web/ui/grid/mixins' as device;
+
+:host {
+  display: flex;
+  flex-direction: row;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+
+  @include device.media-tablet-up() {
+    flex-direction: row;
+  }
+}

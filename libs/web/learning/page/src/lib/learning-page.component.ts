@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GroupListComponent } from '@flashcards/web/groups/ui/list';
 
 @Component({
   selector: 'flashcards-learning-page',
@@ -7,6 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./learning-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GroupListComponent],
 })
 export class LearningPageComponent {}

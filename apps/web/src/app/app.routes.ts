@@ -24,6 +24,10 @@ export const appRoutes: Route[] = [
         loadComponent: () => import('@flashcards/web/dictionary/page').then((modules) => modules.DictionaryPageComponent),
       },
       {
+        path: 'learning',
+        loadComponent: () => import('@flashcards/web/learning/page').then((modules) => modules.LearningPageComponent),
+      },
+      {
         path: 'users',
         loadChildren: () => import('./routes/users.routes').then((modules) => modules.usersRoutes),
       },

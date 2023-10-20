@@ -1,1 +1,6 @@
-<p>group-learn works!</p>
+<mat-card *ngIf="uuid | getGroup | async; let group">
+  <mat-card-header>
+    <mat-card-title>Learn {{ group.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content> ??? </mat-card-content>
+</mat-card>

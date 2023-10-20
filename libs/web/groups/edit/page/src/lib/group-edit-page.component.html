@@ -1,4 +1,4 @@
-<mat-card *ngIf="group$ | async; let group">
+<mat-card *ngIf="uuid | getGroup | async; let group">
   <mat-card-header>
     <mat-card-title>Edit {{ group.name }}</mat-card-title>
   </mat-card-header>

@@ -1,6 +1,1 @@
-<mat-card *ngIf="uuid | getGroup | async; let group">
-  <mat-card-header>
-    <mat-card-title>Learn {{ group.name }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content> ??? </mat-card-content>
-</mat-card>
+<flashcards-cards-carousel [cards]="cards" *ngIf="uuid | getCards | async; let cards"></flashcards-cards-carousel>

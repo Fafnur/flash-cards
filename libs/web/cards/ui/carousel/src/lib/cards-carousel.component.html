@@ -1,1 +1,5 @@
-<p>cards-carousel works!</p>
+<flashcards-card-carousel
+  [card]="card"
+  [active]="active === index"
+  *ngFor="let card of cards; let index = index; trackBy: trackByFn"
+></flashcards-card-carousel>

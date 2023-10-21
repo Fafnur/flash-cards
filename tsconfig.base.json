@@ -38,7 +38,6 @@
       "@flashcards/web/auth/register/page": ["libs/web/auth/register/page/src/index.ts"],
       "@flashcards/web/auth/ui/fields": ["libs/web/auth/ui/fields/src/index.ts"],
       "@flashcards/web/auth/ui/layout": ["libs/web/auth/ui/layout/src/index.ts"],
-      "@flashcards/web/cards/ui/create": ["libs/web/cards/ui/create/src/index.ts"],
       "@flashcards/web/cards/ui/fields": ["libs/web/cards/ui/fields/src/index.ts"],
       "@flashcards/web/cards/ui/form": ["libs/web/cards/ui/form/src/index.ts"],
       "@flashcards/web/cards/ui/table": ["libs/web/cards/ui/table/src/index.ts"],

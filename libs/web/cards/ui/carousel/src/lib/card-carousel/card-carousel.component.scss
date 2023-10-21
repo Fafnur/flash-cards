@@ -10,4 +10,9 @@
   &.is-active {
     z-index: 200;
   }
+
+  .mat-mdc-card-content {
+    text-align: center;
+    padding: 2rem;
+  }
 }

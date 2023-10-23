@@ -37,7 +37,6 @@ export class CardsCarouselComponent {
   }
 
   next(): void {
-    console.log('next');
     this.active = this.active === this.cards.length - 1 ? 0 : this.active + 1;
   }
 }

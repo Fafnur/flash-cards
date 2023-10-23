@@ -1,8 +1,10 @@
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnChanges, SimpleChange } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 import { Card } from '@flashcards/cards/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'flashcards-card-carousel',
@@ -10,13 +12,31 @@ import { Card } from '@flashcards/cards/common';
   styleUrls: ['./card-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatCardModule, NgIf],
+  imports: [MatCardModule, NgIf, FormsModule],
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'flashcards-card-carousel',
   },
+  animations: [
+    trigger('tapped', [
+      state('on', style({ transform: 'rotateY(-180deg)', color: 'inherit' })),
+      state('off', style({ transform: 'rotateY(0)', color: 'inherit' })),
+      transition('off => on', [
+        animate(
+          '200ms',
+          keyframes([style({ transform: 'rotateY(0)', color: 'transparent' }), style({ transform: 'rotateY(-180deg)', color: 'inherit' })]),
+        ),
+      ]),
+      transition('on => off', [
+        animate(
+          '200ms',
+          keyframes([style({ transform: 'rotateY(-180deg)', color: 'transparent' }), style({ transform: 'rotateY(0)', color: 'inherit' })]),
+        ),
+      ]),
+    ]),
+  ],
 })
-export class CardCarouselComponent {
+export class CardCarouselComponent implements OnChanges {
   @Input({ required: true }) card!: Card;
   @Input({ required: true }) active!: boolean;
 
@@ -34,5 +54,16 @@ export class CardCarouselComponent {
   @HostBinding('class.is-active')
   get isActive(): boolean {
     return this.active;
+  }
+
+  @HostBinding('class.is-tapped')
+  get isTapped(): boolean {
+    return this.tapped;
+  }
+
+  ngOnChanges(changes: { active: SimpleChange }): void {
+    if (this.tapped && !changes.active.currentValue) {
+      this.tapped = false;
+    }
   }
 }

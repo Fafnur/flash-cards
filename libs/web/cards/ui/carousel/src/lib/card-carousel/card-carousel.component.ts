@@ -1,10 +1,19 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnChanges, SimpleChange } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChange,
+} from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 import { Card } from '@flashcards/cards/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'flashcards-card-carousel',
@@ -12,7 +21,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./card-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatCardModule, NgIf, FormsModule],
+  imports: [MatCardModule, NgIf],
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'flashcards-card-carousel',

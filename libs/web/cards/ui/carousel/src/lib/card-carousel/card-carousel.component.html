@@ -1,4 +1,12 @@
-<mat-card [@tapped]="tapped ? 'on' : 'off'">
+<mat-card
+  [@tapped]="tapped ? 'on' : 'off'"
+  cdkDragLockAxis="x"
+  cdkDrag
+  [cdkDragFreeDragPosition]="dragPosition"
+  (cdkDragEnded)="onDragEnded()"
+  (cdkDragStarted)="onDragStart($event)"
+  #slide
+>
   <mat-card-content>
     {{ label }}
   </mat-card-content>

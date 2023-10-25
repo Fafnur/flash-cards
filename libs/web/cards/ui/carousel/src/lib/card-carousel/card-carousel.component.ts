@@ -1,17 +1,9 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { CdkDrag, CdkDragStart } from '@angular/cdk/drag-drop';
 import { NgIf } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  HostBinding,
-  HostListener,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChange,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnChanges, SimpleChange, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { tap } from 'rxjs';
 
 import { Card } from '@flashcards/cards/common';
 
@@ -21,7 +13,7 @@ import { Card } from '@flashcards/cards/common';
   styleUrls: ['./card-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatCardModule, NgIf],
+  imports: [MatCardModule, NgIf, CdkDrag],
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'flashcards-card-carousel',
@@ -49,7 +41,10 @@ export class CardCarouselComponent implements OnChanges {
   @Input({ required: true }) card!: Card;
   @Input({ required: true }) active!: boolean;
 
+  @ViewChild('slide', { static: true }) slide!: any;
+
   tapped = false;
+  dragPosition = { x: 0, y: 0 };
 
   get label(): string {
     return this.tapped ? this.card.translation : this.card.original;
@@ -74,5 +69,13 @@ export class CardCarouselComponent implements OnChanges {
     if (this.tapped && !changes.active.currentValue) {
       this.tapped = false;
     }
+  }
+
+  onDragStart(event: CdkDragStart): void {
+    event.source.moved.pipe(tap(console.log)).subscribe();
+  }
+
+  onDragEnded(): void {
+    this.dragPosition = { x: 0, y: 0 };
   }
 }

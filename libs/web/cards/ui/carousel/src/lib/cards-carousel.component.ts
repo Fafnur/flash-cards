@@ -18,22 +18,22 @@ import { CardCarouselComponent } from './card-carousel/card-carousel.component';
   host: {
     class: 'flashcards-cards-carousel',
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    '[@swipe]': 'animationState',
+    // '[@swipe]': 'animationState',
   },
-  animations: [
-    trigger('swipe', [
-      transition(
-        '* => rotateOutUpRight',
-        animate(
-          200,
-          keyframes([
-            style({ transform: 'rotate3d(0, 0, 0, 0deg)', opacity: 1, transformOrigin: 'right bottom', offset: 0 }),
-            style({ transform: 'rotate3d(0, 0, 1, 30deg)', opacity: 0, transformOrigin: 'right bottom', offset: 1 }),
-          ]),
-        ),
-      ),
-    ]),
-  ],
+  // animations: [
+  //   trigger('swipe', [
+  //     transition(
+  //       '* => rotateOutUpRight',
+  //       animate(
+  //         200,
+  //         keyframes([
+  //           style({ transform: 'rotate3d(0, 0, 0, 0deg)', opacity: 1, transformOrigin: 'right bottom', offset: 0 }),
+  //           style({ transform: 'rotate3d(0, 0, 1, 30deg)', opacity: 0, transformOrigin: 'right bottom', offset: 1 }),
+  //         ]),
+  //       ),
+  //     ),
+  //   ]),
+  // ],
 })
 export class CardsCarouselComponent {
   @Input({ required: true }) cards!: Card[];
@@ -47,12 +47,12 @@ export class CardsCarouselComponent {
 
   @HostListener('swipeleft')
   onSwipeLeft(): void {
-    this.active = this.active === this.cards.length - 1 ? 0 : this.active + 1;
+    // this.active = this.active === this.cards.length - 1 ? 0 : this.active + 1;
   }
 
   @HostListener('swiperight')
   onSwipeRight(): void {
-    this.animationState = 'rotateOutUpRight';
-    this.active = this.active === this.cards.length - 1 ? 0 : this.active + 1;
+    // this.animationState = 'rotateOutUpRight';
+    // this.active = this.active === this.cards.length - 1 ? 0 : this.active + 1;
   }
 }

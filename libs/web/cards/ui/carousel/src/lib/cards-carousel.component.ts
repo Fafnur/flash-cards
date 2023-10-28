@@ -1,4 +1,4 @@
-import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NgForOf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
@@ -19,40 +19,46 @@ import { CardCarouselComponent } from './card-carousel/card-carousel.component';
     class: 'flashcards-cards-carousel',
     // eslint-disable-next-line @typescript-eslint/naming-convention
     '[@swipe]': 'animationState',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '(@swipe.done)': 'onDone()',
   },
   animations: [
     trigger('swipe', [
-      transition(
-        '* => rotateOutUpRight',
-        animate(
-          200,
-          keyframes([
-            style({ transform: 'rotate3d(0, 0, 0, 0deg)', opacity: 1, transformOrigin: 'right bottom', offset: 0 }),
-            style({ transform: 'rotate3d(0, 0, 1, 30deg)', opacity: 0, transformOrigin: 'right bottom', offset: 1 }),
-          ]),
-        ),
-      ),
+      state('left', style({ transform: 'translateX(-60px)', color: 'transparent' })),
+      state('right', style({ transform: 'translateX(60px)', color: 'transparent' })),
+      state('off', style({ transform: 'translateX(0)', color: 'inherit' })),
+      transition('off => left, off => right', [animate(150)]),
+      transition('* => off', [animate(0)]),
     ]),
   ],
 })
 export class CardsCarouselComponent {
   @Input({ required: true }) cards!: Card[];
 
-  @Output() selected = new EventEmitter<number>();
-  active = 0;
+  @Output() selected = new EventEmitter<Card>();
 
   readonly trackByFn = trackByEntity;
 
-  animationState!: string;
+  animationState = 'off';
 
   @HostListener('swipeleft')
   onSwipeLeft(): void {
-    this.active = this.active === this.cards.length - 1 ? 0 : this.active + 1;
+    this.animationState = 'left';
   }
 
   @HostListener('swiperight')
   onSwipeRight(): void {
-    this.animationState = 'rotateOutUpRight';
-    this.active = this.active === this.cards.length - 1 ? 0 : this.active + 1;
+    this.animationState = 'right';
+  }
+
+  onDone(): void {
+    if (['left', 'right'].includes(this.animationState)) {
+      this.animationState = 'off';
+
+      const selected = this.cards.shift();
+      if (selected) {
+        this.selected.emit(selected);
+      }
+    }
   }
 }

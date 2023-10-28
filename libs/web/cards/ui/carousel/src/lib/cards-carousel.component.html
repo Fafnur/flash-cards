@@ -1,5 +1,5 @@
 <flashcards-card-carousel
   [card]="card"
-  [active]="active === index"
+  [active]="0 === index"
   *ngFor="let card of cards; let index = index; trackBy: trackByFn"
 ></flashcards-card-carousel>

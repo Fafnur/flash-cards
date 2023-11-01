@@ -1,5 +1,11 @@
-<flashcards-card-carousel
-  [card]="card"
-  [active]="0 === index"
-  *ngFor="let card of cards; let index = index; trackBy: trackByFn"
-></flashcards-card-carousel>
+<ng-container *ngIf="cards.length > 0; else emptyTpl">
+  <flashcards-card-carousel
+    [card]="card"
+    [active]="0 === index"
+    *ngFor="let card of cards; let index = index; trackBy: trackByFn"
+  ></flashcards-card-carousel>
+</ng-container>
+
+<ng-template #emptyTpl>
+  <p>No words to learn</p>
+</ng-template>

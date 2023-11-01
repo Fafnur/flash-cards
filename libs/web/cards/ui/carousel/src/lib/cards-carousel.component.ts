@@ -1,8 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
-import { Card } from '@flashcards/cards/common';
+import { Card, CardLearn } from '@flashcards/cards/common';
 import { trackByEntity } from '@flashcards/core';
 
 import { CardCarouselComponent } from './card-carousel/card-carousel.component';
@@ -13,7 +13,7 @@ import { CardCarouselComponent } from './card-carousel/card-carousel.component';
   styleUrls: ['./cards-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgForOf, CardCarouselComponent],
+  imports: [NgForOf, CardCarouselComponent, NgIf],
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'flashcards-cards-carousel',
@@ -35,7 +35,7 @@ import { CardCarouselComponent } from './card-carousel/card-carousel.component';
 export class CardsCarouselComponent {
   @Input({ required: true }) cards!: Card[];
 
-  @Output() selected = new EventEmitter<Card>();
+  @Output() learned = new EventEmitter<CardLearn>();
 
   readonly trackByFn = trackByEntity;
 
@@ -53,11 +53,12 @@ export class CardsCarouselComponent {
 
   onDone(): void {
     if (['left', 'right'].includes(this.animationState)) {
+      const learned = this.animationState === 'right';
       this.animationState = 'off';
 
       const selected = this.cards.shift();
       if (selected) {
-        this.selected.emit(selected);
+        this.learned.emit({ card: selected, learned });
       }
     }
   }

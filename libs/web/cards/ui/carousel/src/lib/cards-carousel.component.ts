@@ -43,12 +43,16 @@ export class CardsCarouselComponent {
 
   @HostListener('swipeleft')
   onSwipeLeft(): void {
-    this.animationState = 'left';
+    if (this.cards.length) {
+      this.animationState = 'left';
+    }
   }
 
   @HostListener('swiperight')
   onSwipeRight(): void {
-    this.animationState = 'right';
+    if (this.cards.length) {
+      this.animationState = 'right';
+    }
   }
 
   onDone(): void {

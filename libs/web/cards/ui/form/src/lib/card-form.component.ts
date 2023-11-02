@@ -8,7 +8,7 @@ import { tap } from 'rxjs';
 
 import { Card, CardChange, CardNew } from '@flashcards/cards/common';
 import { uuidv4 } from '@flashcards/core';
-import { CardOriginalComponent, CardTranslationComponent } from '@flashcards/web/cards/ui/fields';
+import { CardLearnComponent, CardOriginalComponent, CardTranslationComponent } from '@flashcards/web/cards/ui/fields';
 
 @Component({
   selector: 'flashcards-card-form',
@@ -16,7 +16,7 @@ import { CardOriginalComponent, CardTranslationComponent } from '@flashcards/web
   styleUrls: ['./card-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatButtonModule, CardTranslationComponent, CardOriginalComponent, MatIconModule],
+  imports: [NgIf, ReactiveFormsModule, MatButtonModule, CardTranslationComponent, CardOriginalComponent, CardLearnComponent, MatIconModule],
   animations: [
     trigger('checked', [
       state('on', style({ transform: 'translateX(-10px)' })),
@@ -35,13 +35,16 @@ export class CardFormComponent implements OnInit {
     uuid: new FormControl<string>('', { nonNullable: true, validators: [] }),
     original: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     translation: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    learn: new FormControl<boolean>(false, { nonNullable: true, validators: [] }),
+    repeated: new FormControl<string[]>([], { nonNullable: true, validators: [] }),
   });
 
   @ViewChild(CardTranslationComponent, { static: true }) translation!: CardTranslationComponent;
 
   @Input() set card(card: Card | null | undefined) {
     if (card) {
-      this.form.patchValue(card);
+      this.currentCard = card;
+      this.form.patchValue({ ...card, learn: card.repeated.length > 0 });
     }
   }
 
@@ -50,6 +53,8 @@ export class CardFormComponent implements OnInit {
   @Output() removed = new EventEmitter<string>();
 
   removing = false;
+
+  currentCard?: Card;
 
   get hasCard(): boolean {
     return !!this.form.controls.uuid.value;
@@ -60,10 +65,17 @@ export class CardFormComponent implements OnInit {
       .pipe(
         tap(() => {
           if (this.hasCard) {
-            this.changed.emit(this.form.getRawValue() as CardChange);
+            const { learn, repeated, ...formData } = this.form.getRawValue();
+            const repeatedChanged =
+              !learn && repeated.length > 0 ? [] : learn && repeated.length === 0 ? [new Date().toISOString()] : repeated;
+
+            this.changed.emit({ ...formData, repeated: repeatedChanged } as CardChange);
           } else if (this.form.valid) {
             const uuid = uuidv4();
-            this.submitted.emit({ ...this.form.getRawValue(), uuid });
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { learn, repeated, ...formData } = this.form.getRawValue();
+
+            this.submitted.emit({ ...formData, uuid });
             this.translation.blur();
             this.form.reset();
           }

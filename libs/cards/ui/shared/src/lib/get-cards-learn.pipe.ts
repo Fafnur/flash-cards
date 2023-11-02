@@ -1,5 +1,5 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
-import { EMPTY, map, Observable } from 'rxjs';
+import { EMPTY, map, Observable, take } from 'rxjs';
 
 import { Card } from '@flashcards/cards/common';
 import { CardService } from '@flashcards/cards/services';
@@ -17,8 +17,9 @@ export class GetCardsLearnPipe implements PipeTransform {
       return EMPTY;
     }
 
-    return this.cardService
-      .cardsByGroup$(typeof groupOrGroupUuid === 'string' ? groupOrGroupUuid : groupOrGroupUuid.uuid)
-      .pipe(map((cards) => cards.filter((card) => card.repeated.length === 0)));
+    return this.cardService.cardsByGroup$(typeof groupOrGroupUuid === 'string' ? groupOrGroupUuid : groupOrGroupUuid.uuid).pipe(
+      take(1),
+      map((cards) => cards.filter((card) => card.repeated.length === 0)),
+    );
   }
 }

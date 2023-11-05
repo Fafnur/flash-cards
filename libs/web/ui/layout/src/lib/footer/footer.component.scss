@@ -3,6 +3,7 @@
 :host {
   background-color: var(--mat-sidenav-container-background-color);
   color: var(--mat-sidenav-container-text-color);
+  box-shadow: 0 0 10px rgba(var(--flashcards-color-default-rgba), 0.08);
 }
 
 .flashcards-container {

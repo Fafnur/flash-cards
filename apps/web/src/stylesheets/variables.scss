@@ -6,6 +6,11 @@ $color-accent: mat.get-color-from-palette(mat.$pink-palette, A200);
 $color-warning: mat.get-color-from-palette(mat.$amber-palette, 500);
 $color-danger: mat.get-color-from-palette(mat.$red-palette, 900);
 
-//:root {
-//  --flashcards-color-default: #{mat.get-color-from-palette(mat.$gray-palette, 900)};
-//}
+:root {
+  //--flashcards-color-default: #{mat.get-color-from-palette(mat.$gray-palette, 900)};
+  --flashcards-color-default-rgba: 0, 0, 0;
+}
+
+html[data-theme='dark'] {
+  --flashcards-color-default-rgba: 255, 255, 255;
+}

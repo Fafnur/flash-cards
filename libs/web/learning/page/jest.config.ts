@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-cards-ui-create',
-  preset: '../../../../../jest.preset.js',
+  displayName: 'web-learning-page',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../../../coverage/libs/web/cards/ui/create',
+  coverageDirectory: '../../../../coverage/libs/web/learning/page',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

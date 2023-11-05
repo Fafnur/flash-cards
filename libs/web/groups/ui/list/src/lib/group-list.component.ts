@@ -17,5 +17,5 @@ export class GroupListComponent {
   readonly groupService = inject(GroupService);
   readonly trackByEntity = trackByEntity;
 
-  @Input() action: 'view' | 'edit' = 'view';
+  @Input() action: 'view' | 'edit' | 'learn' = 'view';
 }

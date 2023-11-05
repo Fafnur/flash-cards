@@ -21,3 +21,8 @@ export type CardCreate = Omit<Card, 'createdAt' | 'updatedAt' | 'repeated'>;
 export type CardChange = Partial<Omit<Card, 'createdAt' | 'updatedAt' | 'user' | 'groupUuid'>>;
 
 export const CARDS_KEY = 'cards';
+
+export interface CardLearn {
+  readonly card: Card;
+  readonly learned: boolean;
+}

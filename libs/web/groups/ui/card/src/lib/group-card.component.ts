@@ -16,5 +16,5 @@ import { Group } from '@flashcards/groups/common';
 })
 export class GroupCardComponent {
   @Input({ required: true }) group!: Group;
-  @Input({ required: true }) action!: 'view' | 'edit';
+  @Input({ required: true }) action!: 'view' | 'edit' | 'learn';
 }

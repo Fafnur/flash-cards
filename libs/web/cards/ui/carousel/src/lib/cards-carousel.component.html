@@ -1,9 +1,13 @@
 <ng-container *ngIf="cards.length > 0; else emptyTpl">
-  <flashcards-card-carousel
-    [card]="card"
-    [active]="0 === index"
-    *ngFor="let card of cards; let index = index; trackBy: trackByFn"
-  ></flashcards-card-carousel>
+  <div class="carousel">
+    <flashcards-card-carousel
+      (learned)="onLearned($event)"
+      [card]="card"
+      [active]="0 === index"
+      *ngFor="let card of cards; let index = index; trackBy: trackByFn"
+    ></flashcards-card-carousel>
+  </div>
+  <flashcards-card-actions (learned)="onLearn($event)"></flashcards-card-actions>
 </ng-container>
 
 <ng-template #emptyTpl>

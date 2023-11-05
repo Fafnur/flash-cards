@@ -3,6 +3,6 @@
   <flashcards-card-translation [control]="form.controls.translation"></flashcards-card-translation>
 </form>
 <flashcards-card-learn [control]="form.controls.learn" *ngIf="form.controls.uuid.value && removing"></flashcards-card-learn>
-<button mat-icon-button (click)="onRemove()" *ngIf="removing">
+<button mat-icon-button color="warn" (click)="onRemove()" *ngIf="removing">
   <mat-icon>close</mat-icon>
 </button>

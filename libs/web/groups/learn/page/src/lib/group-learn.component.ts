@@ -10,6 +10,8 @@ import { CardsCarouselComponent } from '@flashcards/web/cards/ui/carousel';
 import { CardsTableComponent } from '@flashcards/web/cards/ui/table';
 import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
 
+import { CardsRepeatComponent } from './cards-repeat/cards-repeat.component';
+
 @Component({
   selector: 'flashcards-group-learn',
   templateUrl: './group-learn.component.html',
@@ -25,10 +27,13 @@ import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
     NgIf,
     CardsCarouselComponent,
     GetCardsLearnPipe,
+    CardsRepeatComponent,
   ],
 })
 export class GroupLearnComponent {
   @Input() uuid!: string;
+
+  finished = false;
 
   constructor(private readonly cardService: CardService) {}
 
@@ -41,6 +46,10 @@ export class GroupLearnComponent {
   }
 
   onFinished(): void {
-    // TODO: Add restart
+    this.finished = true;
+  }
+
+  onRepeat(): void {
+    this.finished = false;
   }
 }

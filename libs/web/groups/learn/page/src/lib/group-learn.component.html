@@ -1,6 +1,7 @@
 <flashcards-cards-carousel
   [cards]="cards"
-  *ngIf="uuid | getCardsLearn | async; let cards"
+  *ngIf="!finished && (uuid | getCardsLearn | async); let cards"
   (learned)="onLearned($event)"
   (finished)="onFinished()"
 ></flashcards-cards-carousel>
+<flashcards-cards-repeat *ngIf="finished" (repeated)="onRepeat()"></flashcards-cards-repeat>

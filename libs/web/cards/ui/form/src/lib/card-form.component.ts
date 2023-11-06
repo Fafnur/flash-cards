@@ -35,8 +35,7 @@ export class CardFormComponent implements OnInit {
     uuid: new FormControl<string>('', { nonNullable: true, validators: [] }),
     original: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     translation: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-    learn: new FormControl<boolean>(false, { nonNullable: true, validators: [] }),
-    repeated: new FormControl<string[]>([], { nonNullable: true, validators: [] }),
+    learned: new FormControl<boolean>(false, { nonNullable: true, validators: [] }),
   });
 
   @ViewChild(CardTranslationComponent, { static: true }) translation!: CardTranslationComponent;
@@ -62,17 +61,10 @@ export class CardFormComponent implements OnInit {
       .pipe(
         tap(() => {
           if (this.hasCard) {
-            const { learn, repeated, ...formData } = this.form.getRawValue();
-            const repeatedChanged =
-              !learn && repeated.length > 0 ? [] : learn && repeated.length === 0 ? [new Date().toISOString()] : repeated;
-
-            this.changed.emit({ ...formData, repeated: repeatedChanged } as CardChange);
+            this.changed.emit(this.form.getRawValue());
           } else if (this.form.valid) {
             const uuid = uuidv4();
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { learn, repeated, ...formData } = this.form.getRawValue();
-
-            this.submitted.emit({ ...formData, uuid });
+            this.submitted.emit({ ...this.form.getRawValue(), uuid });
             this.translation.blur();
             this.form.reset();
           }

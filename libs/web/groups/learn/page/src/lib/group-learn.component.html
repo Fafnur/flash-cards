@@ -2,4 +2,5 @@
   [cards]="cards"
   *ngIf="uuid | getCardsLearn | async; let cards"
   (learned)="onLearned($event)"
+  (finished)="onFinished()"
 ></flashcards-cards-carousel>

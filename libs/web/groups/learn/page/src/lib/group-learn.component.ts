@@ -32,11 +32,15 @@ export class GroupLearnComponent {
 
   constructor(private readonly cardService: CardService) {}
 
-  onLearned(cardSwiped: CardLearn): void {
-    if (cardSwiped.learned) {
-      this.cardService.change(cardSwiped.card.uuid, {
-        repeated: [...cardSwiped.card.repeated, new Date().toISOString()],
+  onLearned(cardLearn: CardLearn): void {
+    if (cardLearn.learned) {
+      this.cardService.change(cardLearn.card.uuid, {
+        learned: cardLearn.learned,
       });
     }
+  }
+
+  onFinished(): void {
+    // TODO: Add restart
   }
 }

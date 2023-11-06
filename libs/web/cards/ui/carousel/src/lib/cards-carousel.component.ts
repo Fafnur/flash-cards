@@ -23,6 +23,7 @@ export class CardsCarouselComponent {
   @Input({ required: true }) cards!: Card[];
 
   @Output() learned = new EventEmitter<CardLearn>();
+  @Output() finished = new EventEmitter<void>();
 
   @ViewChildren(CardCarouselComponent) slides!: QueryList<CardCarouselComponent>;
 
@@ -31,12 +32,13 @@ export class CardsCarouselComponent {
   onLearned(learned: CardLearn): void {
     this.cards.shift();
     this.learned.emit(learned);
+
+    if (this.cards.length === 0) {
+      this.finished.emit();
+    }
   }
 
   onLearn(learned: boolean): void {
-    // this.cards.shift();
-    // this.learned.emit(learned);
-
     if (learned) {
       this.slides.first.onSwipeRight();
     } else {

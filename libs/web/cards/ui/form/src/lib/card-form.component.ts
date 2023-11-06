@@ -43,8 +43,7 @@ export class CardFormComponent implements OnInit {
 
   @Input() set card(card: Card | null | undefined) {
     if (card) {
-      this.currentCard = card;
-      this.form.patchValue({ ...card, learn: card.repeated.length > 0 });
+      this.form.patchValue(card);
     }
   }
 
@@ -53,8 +52,6 @@ export class CardFormComponent implements OnInit {
   @Output() removed = new EventEmitter<string>();
 
   removing = false;
-
-  currentCard?: Card;
 
   get hasCard(): boolean {
     return !!this.form.controls.uuid.value;

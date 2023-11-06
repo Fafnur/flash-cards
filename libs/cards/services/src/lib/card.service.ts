@@ -2,15 +2,11 @@ import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
 
-import { Card, CardChange, CardCreate, CardLearn } from '@flashcards/cards/common';
-import { EntityService, isNotNullOrUndefined } from '@flashcards/core';
+import { Card, CardChange, CardCreate } from '@flashcards/cards/common';
+import { EntityService, isNotNullOrUndefined, sortComparer } from '@flashcards/core';
 
 import { CardApi } from './card.api';
 import { CardStorage } from './card.storage';
-
-export function sortComparer(a: Card, b: Card): number {
-  return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
-}
 
 @Injectable({
   providedIn: 'root',
@@ -66,7 +62,7 @@ export class CardService extends EntityService<Card> {
     const createdAt = new Date().toISOString();
     const card: Card = {
       ...cardCreate,
-      repeated: [],
+      learned: false,
       createdAt,
       updatedAt: createdAt,
     };
@@ -82,14 +78,6 @@ export class CardService extends EntityService<Card> {
     }
 
     this.update({ ...cardLast, ...cardChange, updatedAt: new Date().toISOString() });
-  }
-
-  learn(cardSwiped: CardLearn): void {
-    this.update({
-      ...cardSwiped.card,
-      repeated: cardSwiped.learned ? [...cardSwiped.card.repeated, new Date().toISOString()] : cardSwiped.card.repeated,
-      updatedAt: new Date().toISOString(),
-    });
   }
 
   remove(uuid: string): void {

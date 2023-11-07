@@ -5,6 +5,7 @@ import { tap } from 'rxjs';
 
 import { Group, GroupChange } from '@flashcards/groups/common';
 import { GroupLangComponent, GroupNameComponent } from '@flashcards/web/groups/ui/fields';
+import { ColumnComponent, RowComponent } from '@flashcards/web/ui/grid';
 
 @Component({
   selector: 'flashcards-group-form',
@@ -12,7 +13,7 @@ import { GroupLangComponent, GroupNameComponent } from '@flashcards/web/groups/u
   styleUrls: ['./group-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, GroupNameComponent, GroupLangComponent],
+  imports: [ReactiveFormsModule, MatButtonModule, GroupNameComponent, GroupLangComponent, RowComponent, ColumnComponent],
 })
 export class GroupFormComponent implements OnInit {
   readonly form = new FormGroup({

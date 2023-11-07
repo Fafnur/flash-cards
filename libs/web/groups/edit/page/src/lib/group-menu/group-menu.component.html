@@ -1,0 +1,9 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onRemove()">
+    <mat-icon>delete_forever</mat-icon>
+    <span>Remove</span>
+  </button>
+</mat-menu>

@@ -4,5 +4,5 @@
 </form>
 <flashcards-card-learn [control]="form.controls.learned" *ngIf="form.controls.uuid.value && removing"></flashcards-card-learn>
 <button mat-icon-button color="warn" (click)="onRemove()" *ngIf="removing">
-  <mat-icon>close</mat-icon>
+  <mat-icon>delete_forever</mat-icon>
 </button>

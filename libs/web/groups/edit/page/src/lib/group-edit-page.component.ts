@@ -9,13 +9,15 @@ import { GetGroupPipe } from '@flashcards/groups/ui/shared';
 import { CardsTableComponent } from '@flashcards/web/cards/ui/table';
 import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
 
+import { GroupMenuComponent } from './group-menu/group-menu.component';
+
 @Component({
   selector: 'flashcards-group-edit-page',
   templateUrl: './group-edit-page.component.html',
   styleUrls: ['./group-edit-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, GroupFormComponent, AsyncPipe, GetCardsPipe, GetGroupPipe, MatCardModule, CardsTableComponent],
+  imports: [NgIf, GroupFormComponent, AsyncPipe, GetCardsPipe, GetGroupPipe, MatCardModule, CardsTableComponent, GroupMenuComponent],
 })
 export class GroupEditPageComponent {
   @Input() uuid!: string;

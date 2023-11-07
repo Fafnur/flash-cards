@@ -27,8 +27,8 @@ export class CardEntity implements Card {
   @Column()
   user!: string;
 
-  @Column({ name: 'repeated', type: 'json', default: '[]' })
-  repeated!: string[];
+  @Column({ default: false })
+  learned!: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: string;

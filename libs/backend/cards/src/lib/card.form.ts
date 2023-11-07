@@ -1,4 +1,4 @@
-import { IsArray, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
 import { CardChange, CardCreate } from '@flashcards/cards/common';
 
@@ -53,7 +53,7 @@ export class CardChangeForm implements CardChange {
   @IsOptional()
   cover?: string;
 
-  @IsArray()
+  @IsBoolean()
   @IsOptional()
-  repeated?: string[];
+  learned?: boolean;
 }

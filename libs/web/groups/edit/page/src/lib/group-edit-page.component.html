@@ -1,6 +1,7 @@
 <mat-card *ngIf="uuid | getGroup | async; let group">
   <mat-card-header>
-    <mat-card-title>Edit {{ group.name }}</mat-card-title>
+    <mat-card-title i18n="Group Edit|Title">Edit {{ group.name }} </mat-card-title>
+    <flashcards-group-menu [uuid]="uuid"></flashcards-group-menu>
   </mat-card-header>
   <mat-card-content>
     <flashcards-group-form [group]="group" (changed)="onChanged($event)"></flashcards-group-form>

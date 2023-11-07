@@ -1,10 +1,10 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NgForOf, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 
 import { Card, CardLearn } from '@flashcards/cards/common';
 import { trackByEntity } from '@flashcards/core';
 
+import { CardActionsComponent } from './card-actions/card-actions.component';
 import { CardCarouselComponent } from './card-carousel/card-carousel.component';
 
 @Component({
@@ -13,57 +13,36 @@ import { CardCarouselComponent } from './card-carousel/card-carousel.component';
   styleUrls: ['./cards-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgForOf, CardCarouselComponent, NgIf],
+  imports: [NgForOf, NgIf, CardCarouselComponent, CardActionsComponent],
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'flashcards-cards-carousel',
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    '[@swipe]': 'animationState',
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    '(@swipe.done)': 'onDone()',
   },
-  animations: [
-    trigger('swipe', [
-      state('left', style({ transform: 'translateX(-60px)', color: 'transparent' })),
-      state('right', style({ transform: 'translateX(60px)', color: 'transparent' })),
-      state('off', style({ transform: 'translateX(0)', color: 'inherit' })),
-      transition('off => left, off => right', [animate(150)]),
-      transition('* => off', [animate(0)]),
-    ]),
-  ],
 })
 export class CardsCarouselComponent {
   @Input({ required: true }) cards!: Card[];
 
   @Output() learned = new EventEmitter<CardLearn>();
+  @Output() finished = new EventEmitter<void>();
+
+  @ViewChildren(CardCarouselComponent) slides!: QueryList<CardCarouselComponent>;
 
   readonly trackByFn = trackByEntity;
 
-  animationState = 'off';
+  onLearned(learned: CardLearn): void {
+    this.cards.shift();
+    this.learned.emit(learned);
 
-  @HostListener('swipeleft')
-  onSwipeLeft(): void {
-    if (this.cards.length && this.animationState === 'off') {
-      this.animationState = 'left';
+    if (this.cards.length === 0) {
+      this.finished.emit();
     }
   }
 
-  @HostListener('swiperight')
-  onSwipeRight(): void {
-    if (this.cards.length && this.animationState === 'off') {
-      this.animationState = 'right';
-    }
-  }
-
-  onDone(): void {
-    if (['left', 'right'].includes(this.animationState)) {
-      const learned = this.animationState === 'right';
-      this.animationState = 'off';
-
-      const selected = this.cards.shift();
-      if (selected) {
-        this.learned.emit({ card: selected, learned });
-      }
+  onLearn(learned: boolean): void {
+    if (learned) {
+      this.slides.first.onSwipeRight();
+    } else {
+      this.slides.first.onSwipeLeft();
     }
   }
 }

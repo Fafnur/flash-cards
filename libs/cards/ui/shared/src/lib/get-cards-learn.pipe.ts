@@ -19,7 +19,7 @@ export class GetCardsLearnPipe implements PipeTransform {
 
     return this.cardService.cardsByGroup$(typeof groupOrGroupUuid === 'string' ? groupOrGroupUuid : groupOrGroupUuid.uuid).pipe(
       take(1),
-      map((cards) => cards.filter((card) => card.repeated.length === 0)),
+      map((cards) => cards.filter((card) => !card.learned)),
     );
   }
 }

@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use 'libs/web/ui/grid/mixins' as device;
+@use 'mixins' as device;
 
 @mixin make-columns($mode) {
   &.flashcards-#{$mode} {

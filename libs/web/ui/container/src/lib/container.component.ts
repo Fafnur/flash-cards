@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { FluidDirective } from './fluid.directive';
-import { MobileNoGutterDirective } from './mobile-no-gutter.directive';
+import { MobileDirective } from './mobile.directive';
 
 @Component({
   selector: 'flashcards-container',
@@ -19,8 +19,8 @@ import { MobileNoGutterDirective } from './mobile-no-gutter.directive';
       inputs: ['fluid'],
     },
     {
-      directive: MobileNoGutterDirective,
-      inputs: ['mobile-no-gutter'],
+      directive: MobileDirective,
+      inputs: ['mobile'],
     },
   ],
 })

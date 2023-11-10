@@ -1,5 +1,6 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { APP_INITIALIZER, ApplicationConfig } from '@angular/core';
+import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter, withComponentInputBinding, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 
 import { CardService } from '@flashcards/cards/services';
@@ -11,6 +12,7 @@ import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideClientHydration(),
     provideRouter(
       appRoutes,
       withEnabledBlockingInitialNavigation(),
@@ -20,7 +22,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withComponentInputBinding(),
     ),
-    provideHttpClient(withInterceptors(httpInterceptorProviders)),
+    provideHttpClient(withFetch(), withInterceptors(httpInterceptorProviders)),
     {
       provide: LOCAL_DB_CONFIG,
       useValue: {
@@ -29,21 +31,21 @@ export const appConfig: ApplicationConfig = {
         version: 1,
       } as Partial<LocalDBConfig>,
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (userService: UserService, groupService: GroupService, cardService: CardService) => {
-        return () => {
-          userService.init();
-          const uuid = userService.uuid;
-          if (uuid) {
-            groupService.init(uuid);
-            cardService.init(uuid);
-          }
-        };
-      },
-      multi: true,
-      deps: [UserService, GroupService, CardService],
-    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (userService: UserService, groupService: GroupService, cardService: CardService) => {
+    //     return () => {
+    //       userService.init();
+    //       const uuid = userService.uuid;
+    //       if (uuid) {
+    //         groupService.init(uuid);
+    //         cardService.init(uuid);
+    //       }
+    //     };
+    //   },
+    //   multi: true,
+    //   deps: [UserService, GroupService, CardService],
+    // },
     // {
     //   provide: APP_INITIALIZER,
     //   useFactory: (metaService: MetaService, metricService: MetricService) => {

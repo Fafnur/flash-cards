@@ -20,7 +20,7 @@
 <ng-template #main let-fluid="fluid">
   <flashcards-main>
     <router-outlet name="top"></router-outlet>
-    <flashcards-container [fluid]="fluid" mobile-no-gutter>
+    <flashcards-container [fluid]="fluid" mobile>
       <router-outlet></router-outlet>
     </flashcards-container>
     <router-outlet name="bottom"></router-outlet>

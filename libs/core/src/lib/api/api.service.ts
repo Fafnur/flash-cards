@@ -35,8 +35,9 @@ export class ApiService {
   private readonly config: ApiConfig;
 
   constructor(private readonly httpClient: HttpClient) {
+    // TODO: Fix process.env['NX_API_HOST'] ?? '',
     this.config = {
-      host: process.env['NX_API_HOST'] ?? '',
+      host: 'http://localhost:3000',
     };
   }
 

@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, InjectionToken, OnDestroy, Optional } from '@angular/core';
+import { indexedDB as fakeIndexedDB } from 'fake-indexeddb';
 import { first, Observable, ReplaySubject } from 'rxjs';
 
 import { Entity } from '../types/entity.type';
@@ -89,7 +90,7 @@ export class LocalDBService<S extends Record<string, Entity> = Record<string, En
     };
 
     // For support Angular Universal using fakeIndexedDB
-    const indexedDB = this.document.defaultView?.indexedDB;
+    const indexedDB = this.document.defaultView?.indexedDB ?? fakeIndexedDB;
 
     if (indexedDB) {
       const openRequest = indexedDB.open(this.config.dbname, this.config.version);

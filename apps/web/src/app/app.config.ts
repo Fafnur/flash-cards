@@ -31,21 +31,21 @@ export const appConfig: ApplicationConfig = {
         version: 1,
       } as Partial<LocalDBConfig>,
     },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (userService: UserService, groupService: GroupService, cardService: CardService) => {
-    //     return () => {
-    //       userService.init();
-    //       const uuid = userService.uuid;
-    //       if (uuid) {
-    //         groupService.init(uuid);
-    //         cardService.init(uuid);
-    //       }
-    //     };
-    //   },
-    //   multi: true,
-    //   deps: [UserService, GroupService, CardService],
-    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (userService: UserService, groupService: GroupService, cardService: CardService) => {
+        return () => {
+          userService.init();
+          const uuid = userService.uuid;
+          if (uuid) {
+            groupService.init(uuid);
+            cardService.init(uuid);
+          }
+        };
+      },
+      multi: true,
+      deps: [UserService, GroupService, CardService],
+    },
     // {
     //   provide: APP_INITIALIZER,
     //   useFactory: (metaService: MetaService, metricService: MetricService) => {

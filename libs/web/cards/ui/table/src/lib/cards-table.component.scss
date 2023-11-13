@@ -1,4 +1,4 @@
-@use 'mixins' as device;
+@use 'libs/web/ui/grid/mixins' as device;
 
 mat-divider {
   @include device.media-handset() {

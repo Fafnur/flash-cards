@@ -28,7 +28,9 @@ export class AuthService {
   }
 
   init(): void {
-    /* empty */
+    if (this.logged) {
+      this.loggedAction$.next();
+    }
   }
 
   login(credentials: AuthCredentials): Observable<void> {
@@ -53,7 +55,10 @@ export class AuthService {
 
   confirm(credentials: AuthConfirm): Observable<AuthResponse> {
     return this.authApiService.confirm(credentials).pipe(
-      tap((auth) => this.authStorage.set(auth)),
+      tap((auth) => {
+        this.authStorage.set(auth);
+        this.loggedAction$.next();
+      }),
       retry({
         count: 3,
         delay: (error, retryCount) => {

@@ -54,12 +54,11 @@
       "@flashcards/web/groups/ui/form": ["libs/web/groups/ui/form/src/index.ts"],
       "@flashcards/web/groups/ui/list": ["libs/web/groups/ui/list/src/index.ts"],
       "@flashcards/web/learning/page": ["libs/web/learning/page/src/index.ts"],
+      "@flashcards/web/settings/page": ["libs/web/settings/page/src/index.ts"],
       "@flashcards/web/ui/container": ["libs/web/ui/container/src/index.ts"],
       "@flashcards/web/ui/grid": ["libs/web/ui/grid/src/index.ts"],
       "@flashcards/web/ui/layout": ["libs/web/ui/layout/src/index.ts"],
-      "@flashcards/web/ui/title": ["libs/web/ui/title/src/index.ts"],
-      "@flashcards/web/users/profile/page": ["libs/web/users/profile/page/src/index.ts"],
-      "@flashcards/web/users/ui/layout": ["libs/web/users/ui/layout/src/index.ts"]
+      "@flashcards/web/ui/title": ["libs/web/ui/title/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

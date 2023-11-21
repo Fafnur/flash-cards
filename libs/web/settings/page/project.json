@@ -1,7 +1,7 @@
 {
-  "name": "web-users-profile-page",
-  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/web/users/profile/page/src",
+  "name": "web-settings-page",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/settings/page/src",
   "prefix": "flashcards",
   "tags": [],
   "projectType": "library",
@@ -10,14 +10,14 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/web/users/profile/page/jest.config.ts"
+        "jestConfig": "libs/web/settings/page/jest.config.ts"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/web/users/profile/page/**/*.ts", "libs/web/users/profile/page/**/*.html"]
+        "lintFilePatterns": ["libs/web/settings/page/**/*.ts", "libs/web/settings/page/**/*.html"]
       }
     }
   }

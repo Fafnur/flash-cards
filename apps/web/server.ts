@@ -12,7 +12,8 @@ export function app(): express.Express {
   const server = express();
   server.use(cookieParser());
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-  const browserDistFolder = resolve(serverDistFolder, '../browser');
+  const locale = serverDistFolder.split('/').at(-1) ?? '';
+  const browserDistFolder = resolve(serverDistFolder, '../../browser', locale);
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
   const commonEngine = new CommonEngine();
@@ -40,7 +41,12 @@ export function app(): express.Express {
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+        providers: [
+          {
+            provide: APP_BASE_HREF,
+            useValue: baseUrl,
+          },
+        ],
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));

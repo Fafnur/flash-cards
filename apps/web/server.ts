@@ -1,5 +1,6 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -9,8 +10,10 @@ import bootstrap from './src/main.server';
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
+  server.use(cookieParser());
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-  const browserDistFolder = resolve(serverDistFolder, '../browser');
+  const locale = serverDistFolder.split('/').at(-1) ?? '';
+  const browserDistFolder = resolve(serverDistFolder, '../../browser', locale);
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
   const commonEngine = new CommonEngine();
@@ -38,7 +41,12 @@ export function app(): express.Express {
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+        providers: [
+          {
+            provide: APP_BASE_HREF,
+            useValue: baseUrl,
+          },
+        ],
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));
@@ -56,3 +64,5 @@ function run(): void {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
+
+run();

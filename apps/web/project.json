@@ -39,12 +39,7 @@
         },
         "allowedCommonJsDependencies": ["hammerjs"],
         "scripts": [],
-        "localize": ["ru"],
-        "server": "apps/web/src/main.server.ts",
-        "prerender": true,
-        "ssr": {
-          "entry": "apps/web/server.ts"
-        }
+        "localize": ["ru"]
       },
       "configurations": {
         "production": {
@@ -64,8 +59,7 @@
               "maximumError": "10kb"
             }
           ],
-          "outputHashing": "all",
-          "sourceMap": true
+          "outputHashing": "all"
         },
         "development": {
           "optimization": false,

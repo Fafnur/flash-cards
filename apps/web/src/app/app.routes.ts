@@ -29,7 +29,7 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'settings',
-        loadChildren: () => import('@flashcards/web/settings/page').then((modules) => modules.SettingPageComponent),
+        loadComponent: () => import('@flashcards/web/settings/page').then((modules) => modules.SettingPageComponent),
       },
       {
         path: 'groups',

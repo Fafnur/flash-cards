@@ -1,9 +1,7 @@
-import { AsyncPipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { User } from '@flashcards/users/common';
-import { UserService } from '@flashcards/users/services';
+import { SettingsFormComponent } from '@flashcards/web/settings/ui/form';
+import { TitleComponent } from '@flashcards/web/ui/title';
 
 @Component({
   selector: 'flashcards-setting-page',
@@ -11,8 +9,6 @@ import { UserService } from '@flashcards/users/services';
   styleUrls: ['./setting-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, AsyncPipe],
+  imports: [SettingsFormComponent, TitleComponent],
 })
-export class SettingPageComponent {
-  readonly user$: Observable<User> = inject(UserService).user$;
-}
+export class SettingPageComponent {}

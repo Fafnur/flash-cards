@@ -51,26 +51,23 @@
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "none"
+      "e2eTestRunner": "none",
+      "projectNameAndRootFormat": "derived",
+      "standalone": true
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "style": "scss",
+      "unitTestRunner": "jest",
+      "projectNameAndRootFormat": "derived",
+      "standalone": true
     },
     "@nx/angular:component": {
       "style": "scss",
       "changeDetection": "OnPush",
       "standalone": true
     },
-    "@schematics/angular:component": {
-      "style": "scss",
-      "changeDetection": "OnPush",
-      "standalone": true
-    },
     "@nx/angular:pipe": {
-      "standalone": true
-    },
-    "@schematics/angular:pipe": {
       "standalone": true
     }
   },

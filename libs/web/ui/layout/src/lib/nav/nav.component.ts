@@ -19,19 +19,19 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class NavComponent {
   readonly links = [
     {
-      route: 'dashboard',
-      label: $localize`:Nav link|:Dashboard`,
-      icon: 'dashboard',
-    },
-    {
       route: 'learning',
       label: $localize`:Nav link|:Learning`,
-      icon: 'school',
+      icon: 'style',
     },
     {
       route: 'dictionary',
       label: $localize`:Nav link|:Dictionary`,
-      icon: 'view_carousel',
+      icon: 'dashboard_customize',
+    },
+    {
+      route: 'profile',
+      label: $localize`:Nav link|:Profile`,
+      icon: 'person',
     },
     {
       route: 'settings',

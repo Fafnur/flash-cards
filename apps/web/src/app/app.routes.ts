@@ -7,7 +7,7 @@ import { LayoutComponent } from '@flashcards/web/ui/layout';
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'learning',
     pathMatch: 'full',
   },
   {
@@ -16,16 +16,16 @@ export const appRoutes: Route[] = [
     canActivate: [canLogged, canInit],
     children: [
       {
-        path: 'dashboard',
-        loadComponent: () => import('@flashcards/web/dashboard/page').then((modules) => modules.DashboardPageComponent),
+        path: 'learning',
+        loadComponent: () => import('@flashcards/web/learning/page').then((modules) => modules.LearningPageComponent),
       },
       {
         path: 'dictionary',
         loadComponent: () => import('@flashcards/web/dictionary/page').then((modules) => modules.DictionaryPageComponent),
       },
       {
-        path: 'learning',
-        loadComponent: () => import('@flashcards/web/learning/page').then((modules) => modules.LearningPageComponent),
+        path: 'profile',
+        loadComponent: () => import('@flashcards/web/profile/page').then((modules) => modules.ProfilePageComponent),
       },
       {
         path: 'settings',

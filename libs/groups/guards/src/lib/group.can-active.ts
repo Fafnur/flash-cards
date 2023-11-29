@@ -22,7 +22,7 @@ export const canGroup: CanActivateFn = (route) => {
         return true;
       }
 
-      return router.createUrlTree(['/', 'dashboard']);
+      return router.createUrlTree(['/', 'learning']);
     }),
   );
 };

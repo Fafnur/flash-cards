@@ -1,5 +1,6 @@
-<flashcards-group-card
-  [action]="action"
-  [group]="group"
-  *ngFor="let group of groupService.groups$ | async; trackBy: trackByEntity"
-></flashcards-group-card>
+<ng-container *ngIf="groupService.groups$ | async; let groups">
+  <ng-container *ngIf="groups.length > 0">
+    <flashcards-group-card [action]="action" [group]="group" *ngFor="let group of groups; trackBy: trackByEntity"></flashcards-group-card>
+  </ng-container>
+  <flashcards-groups-hint *ngIf="!groups.length && action === 'learn'"></flashcards-groups-hint>
+</ng-container>

@@ -73,7 +73,7 @@ export class RegisterPageComponent {
 
             if (data) {
               // TODO: Redirect
-              this.router.navigate(['/', 'dashboard']);
+              this.router.navigate(['/', 'learning']);
             }
           }),
           catchError(() => {

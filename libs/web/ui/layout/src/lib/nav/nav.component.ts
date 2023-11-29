@@ -21,17 +21,17 @@ export class NavComponent {
     {
       route: 'learning',
       label: $localize`:Nav link|:Learning`,
-      icon: 'school',
+      icon: 'style',
     },
     {
       route: 'dictionary',
       label: $localize`:Nav link|:Dictionary`,
-      icon: 'view_carousel',
+      icon: 'dashboard_customize',
     },
     {
       route: 'profile',
       label: $localize`:Nav link|:Profile`,
-      icon: 'manage_accounts',
+      icon: 'person',
     },
     {
       route: 'settings',

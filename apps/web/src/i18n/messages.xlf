@@ -7,11 +7,11 @@
         <target state="translated">Войти</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/login/page/src/lib/login-page.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/login/page/src/lib/login-page.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">6,9</context>
         </context-group>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Auth Login</note>
@@ -21,11 +21,11 @@
         <target state="translated">Регистрация</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/login/page/src/lib/login-page.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">9,12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/register/page/src/lib/register-page.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">9,12</context>
         </context-group>
         <note priority="1" from="description">Sign up</note>
         <note priority="1" from="meaning">Auth Login</note>
@@ -35,7 +35,7 @@
         <target state="translated">Регистрация</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/register/page/src/lib/register-page.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Auth Register</note>
@@ -45,7 +45,7 @@
         <target state="translated">Войти</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/register/page/src/lib/register-page.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,15</context>
         </context-group>
         <note priority="1" from="description">Sign in</note>
         <note priority="1" from="meaning">Auth Register</note>
@@ -55,7 +55,7 @@
         <target state="translated">Код подтверждения</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-code/auth-code.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Code Label</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -65,7 +65,7 @@
         <target state="translated">00000</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-code/auth-code.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
         <note priority="1" from="description">Code placeholder</note>
         <note priority="1" from="meaning">Auth field</note>
@@ -75,7 +75,7 @@
         <target state="translated">Код неверен</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-code/auth-code.component.html</context>
-          <context context-type="linenumber">4,6</context>
+          <context context-type="linenumber">5,7</context>
         </context-group>
         <note priority="1" from="description">Code Error MinLength</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -85,7 +85,7 @@
         <target state="translated">Код <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязателен<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-code/auth-code.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
         <note priority="1" from="description">Code Error Required</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -95,7 +95,7 @@
         <target state="translated">Email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Email label</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -105,7 +105,7 @@
         <target state="translated">sample@example.com</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
         <note priority="1" from="description">Email placeholder</note>
         <note priority="1" from="meaning">Auth field</note>
@@ -115,7 +115,7 @@
         <target state="translated">Нет пользователя с указанным электронным адресом</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
-          <context context-type="linenumber">4,6</context>
+          <context context-type="linenumber">5,7</context>
         </context-group>
         <note priority="1" from="description">Email Error Server</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -125,7 +125,7 @@
         <target state="translated">Другой пользователь уже использует указанный email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
-          <context context-type="linenumber">7,9</context>
+          <context context-type="linenumber">8,10</context>
         </context-group>
         <note priority="1" from="description">Email Error Server</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -135,7 +135,7 @@
         <target state="translated">Введите корректный email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
-          <context context-type="linenumber">10,12</context>
+          <context context-type="linenumber">11,13</context>
         </context-group>
         <note priority="1" from="description">Email Error Invalid</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -145,7 +145,7 @@
         <target state="translated">Email <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязателен<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">13,14</context>
         </context-group>
         <note priority="1" from="description">Email Error Required</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -155,7 +155,7 @@
         <target state="translated">Имя</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">First Name Label</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -165,7 +165,7 @@
         <target state="translated">Иван</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">4</context>
         </context-group>
         <note priority="1" from="description">First Name placeholder</note>
         <note priority="1" from="meaning">Auth field</note>
@@ -175,7 +175,7 @@
         <target state="translated">Имя <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязательно<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">5,7</context>
         </context-group>
         <note priority="1" from="description">First Name Error Required</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -185,7 +185,7 @@
         <target state="translated">Фамилия</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Last Name Label</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -195,7 +195,7 @@
         <target state="translated">Иванов</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">4</context>
         </context-group>
         <note priority="1" from="description">Last Name placeholder</note>
         <note priority="1" from="meaning">Auth field</note>
@@ -205,7 +205,7 @@
         <target state="translated">Фамилия <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязательна<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">5,7</context>
         </context-group>
         <note priority="1" from="description">Last Name Error Required</note>
         <note priority="1" from="meaning">Auth Field</note>
@@ -215,7 +215,7 @@
         <target state="translated">Начните использовать Flashcards для изучения иностранных языков.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/layout/src/lib/auth-promo/auth-promo.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,2</context>
         </context-group>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Auth promo</note>
@@ -225,7 +225,7 @@
         <target state="translated">Flashcards — приложение для запоминания слов с помощью карточек. Создавайте свои собственные списки слов и изучайте их в любое время. Приложение доступно в браузере и в виде мобильного приложения на Android и iOS.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/layout/src/lib/auth-promo/auth-promo.component.html</context>
-          <context context-type="linenumber">2,5</context>
+          <context context-type="linenumber">3,6</context>
         </context-group>
         <note priority="1" from="description">Description</note>
         <note priority="1" from="meaning">Auth promo</note>
@@ -235,7 +235,7 @@
         <target state="translated">Повторить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/cards/ui/carousel/src/lib/card-actions/card-actions.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,2</context>
         </context-group>
         <note priority="1" from="description">Repeat</note>
         <note priority="1" from="meaning">Actions</note>
@@ -245,7 +245,7 @@
         <target state="translated">Запомнил</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/cards/ui/carousel/src/lib/card-actions/card-actions.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Know</note>
         <note priority="1" from="meaning">Actions</note>
@@ -255,7 +255,7 @@
         <target state="translated">Нет слов для изучения</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/cards/ui/carousel/src/lib/cards-carousel.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">14,16</context>
         </context-group>
         <note priority="1" from="description">No Words</note>
         <note priority="1" from="meaning">Card Carousel</note>
@@ -265,7 +265,7 @@
         <target state="translated">Изучено</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/cards/ui/fields/src/lib/card-learn/card-learn.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,2</context>
         </context-group>
         <note priority="1" from="description">Learned</note>
         <note priority="1" from="meaning">Card Field</note>
@@ -275,7 +275,7 @@
         <target state="translated">Иностранное слово</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/cards/ui/fields/src/lib/card-original/card-original.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Word original</note>
         <note priority="1" from="meaning">Card Field</note>
@@ -285,7 +285,7 @@
         <target state="translated">Перевод</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/cards/ui/fields/src/lib/card-translation/card-translation.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Word Translation</note>
         <note priority="1" from="meaning">Card Field</note>
@@ -295,7 +295,7 @@
         <target state="translated">Перевод</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/cards/ui/fields/src/lib/card-translation/card-translation.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,5</context>
         </context-group>
         <note priority="1" from="description">Word Translation Placeholder</note>
         <note priority="1" from="meaning">Card Field</note>
@@ -310,12 +310,22 @@
         <note priority="1" from="description">Remove card</note>
         <note priority="1" from="meaning">Card Form</note>
       </trans-unit>
+      <trans-unit id="2025889330474865685" datatype="html">
+        <source>Dictionary</source>
+        <target state="translated">Словарь</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/dictionary/page/src/lib/dictionary-page.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Dictionary Page</note>
+      </trans-unit>
       <trans-unit id="7199909457158125944" datatype="html">
         <source>Page not found</source>
         <target state="translated">Страница не найдена</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/not-found/page/src/lib/not-found-page.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Not Found</note>
@@ -325,7 +335,7 @@
         <target state="translated">Возможно, вы искали страницы</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/not-found/page/src/lib/not-found-page.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,6</context>
         </context-group>
         <note priority="1" from="description">Perhaps you were looking for pages</note>
         <note priority="1" from="meaning">Not Found</note>
@@ -335,11 +345,11 @@
         <target state="translated">Главная</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/not-found/page/src/lib/not-found-page.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/permission-denied/page/src/lib/permission-denied-page.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <note priority="1" from="description">Home</note>
         <note priority="1" from="meaning">Links</note>
@@ -349,11 +359,11 @@
         <target state="translated">О проекте</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/not-found/page/src/lib/not-found-page.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/permission-denied/page/src/lib/permission-denied-page.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,9</context>
         </context-group>
         <note priority="1" from="description">About</note>
         <note priority="1" from="meaning">Links</note>
@@ -363,7 +373,7 @@
         <target state="translated">Доступ запрещен</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/permission-denied/page/src/lib/permission-denied-page.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Permission Denied</note>
@@ -373,7 +383,7 @@
         <target state="translated">Возможно, вы искали страницы</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/errors/permission-denied/page/src/lib/permission-denied-page.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,6</context>
         </context-group>
         <note priority="1" from="description">Perhaps you were looking for pages</note>
         <note priority="1" from="meaning">Permission Denied</note>
@@ -393,7 +403,7 @@
         <target state="translated">отркрыть меню</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/edit/page/src/lib/group-menu/group-menu.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,2</context>
         </context-group>
         <note priority="1" from="description">Open menu</note>
         <note priority="1" from="meaning">Group Menu</note>
@@ -403,7 +413,7 @@
         <target state="translated">Удалить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/edit/page/src/lib/group-menu/group-menu.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,9</context>
         </context-group>
         <note priority="1" from="description">Remove</note>
         <note priority="1" from="meaning">Group Menu</note>
@@ -413,7 +423,7 @@
         <target state="translated">Удалить список</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/edit/page/src/lib/group-remove-dialog/group-remove-dialog.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,2</context>
         </context-group>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Group Remove Dialog</note>
@@ -423,7 +433,7 @@
         <target state="translated">Вы действительно хотите удалить группу?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/edit/page/src/lib/group-remove-dialog/group-remove-dialog.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Description</note>
         <note priority="1" from="meaning">Group Remove Dialog</note>
@@ -433,11 +443,11 @@
         <target state="translated">Отмена</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/edit/page/src/lib/group-remove-dialog/group-remove-dialog.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/ui/create/src/lib/group-dialog/group-dialog.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">6,7</context>
         </context-group>
         <note priority="1" from="description">Cancel</note>
         <note priority="1" from="meaning">Actions</note>
@@ -447,7 +457,7 @@
         <target state="translated">Удалить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/edit/page/src/lib/group-remove-dialog/group-remove-dialog.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">5,7</context>
         </context-group>
         <note priority="1" from="description">Delete</note>
         <note priority="1" from="meaning">Actions</note>
@@ -457,7 +467,7 @@
         <target state="translated">Повторить еще раз</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/learn/page/src/lib/cards-repeat/cards-repeat.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,5</context>
         </context-group>
         <note priority="1" from="description">Repeat again</note>
         <note priority="1" from="meaning">Group Learn</note>
@@ -467,11 +477,11 @@
         <target state="translated">Создать</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/ui/create/src/lib/group-create.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,2</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/ui/create/src/lib/group-dialog/group-dialog.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,9</context>
         </context-group>
         <note priority="1" from="description">Create</note>
         <note priority="1" from="meaning">Actions</note>
@@ -481,7 +491,7 @@
         <target state="translated">Создать новый список</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/ui/create/src/lib/group-dialog/group-dialog.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,3</context>
         </context-group>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Group Create</note>
@@ -491,7 +501,7 @@
         <target state="translated">Название списка</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/ui/fields/src/lib/group-name/group-name.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Group Name</note>
         <note priority="1" from="meaning">Group Field</note>
@@ -501,7 +511,7 @@
         <target state="translated">Иностранный язык</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/ui/form/src/lib/group-form.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
         <note priority="1" from="description">Original language</note>
         <note priority="1" from="meaning">Group Field</note>
@@ -511,42 +521,222 @@
          <target state="translated">Перевод</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/groups/ui/form/src/lib/group-form.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">14,15</context>
         </context-group>
         <note priority="1" from="description">Translation</note>
         <note priority="1" from="meaning">Group Field</note>
+      </trans-unit>
+      <trans-unit id="127731065934852018" datatype="html">
+        <source>Instruction</source>
+        <target state="translated">Инструкция</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/ui/list/src/lib/groups-hint/groups-hint.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Group Hint</note>
+      </trans-unit>
+      <trans-unit id="8291442610047499109" datatype="html">
+        <source>Go to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;/dictionary&quot;&gt;"/>dictionary<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> and click on the create button.</source>
+        <target state="translated">Перейдите в <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;/dictionary&quot;&gt;"/>словарь<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> и нажмите кнопку создать.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/ui/list/src/lib/groups-hint/groups-hint.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+        <note priority="1" from="description">Go To</note>
+        <note priority="1" from="meaning">Group Hint</note>
+      </trans-unit>
+      <trans-unit id="4166607115603049708" datatype="html">
+        <source>Enter a name for the list and select foreign and native languages.</source>
+        <target state="translated">Введите название списка и выберите иностранный и родной языки.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/ui/list/src/lib/groups-hint/groups-hint.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+        <note priority="1" from="description">Enter Card Info</note>
+        <note priority="1" from="meaning">Group Hint</note>
+      </trans-unit>
+      <trans-unit id="6306116167501595525" datatype="html">
+        <source>Open the card that appears and fill it in with the words you are studying.</source>
+        <target state="translated">Откройте появившуюся карточку и заполните ее словами.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/ui/list/src/lib/groups-hint/groups-hint.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+        <note priority="1" from="description">Add Words</note>
+        <note priority="1" from="meaning">Group Hint</note>
+      </trans-unit>
+      <trans-unit id="6211406529429244290" datatype="html">
+        <source>Learning</source>
+        <target state="translated">Обучение</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/learning/page/src/lib/learning-page.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Learning Page</note>
+      </trans-unit>
+      <trans-unit id="7746127708810738503" datatype="html">
+        <source>Profile</source>
+        <target state="translated">Профиль</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/page/src/lib/profile-page.component.html</context>
+          <context context-type="linenumber">1,3</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Profile Page</note>
+      </trans-unit>
+      <trans-unit id="8295712884098052" datatype="html">
+        <source>Change personal information</source>
+        <target state="translated">Изменение личной информации</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/page/src/lib/profile-page.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <note priority="1" from="description">Form</note>
+        <note priority="1" from="meaning">Profile Page</note>
+      </trans-unit>
+      <trans-unit id="8276049367962346801" datatype="html">
+        <source>Email</source>
+        <target state="translated">Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/ui/form/src/lib/user-email/user-email.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+        <note priority="1" from="description">Email Label</note>
+        <note priority="1" from="meaning">Settings Field</note>
+      </trans-unit>
+      <trans-unit id="2466601127338199992" datatype="html">
+        <source>mail@example.com</source>
+        <target state="translated">mail@example.com</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/ui/form/src/lib/user-email/user-email.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="description">Email Placeholder</note>
+        <note priority="1" from="meaning">Settings Field</note>
+      </trans-unit>
+      <trans-unit id="8100164062172201511" datatype="html">
+        <source>Изменить email невозможно.</source>
+        <target state="translated">Имя</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/ui/form/src/lib/user-email/user-email.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+        <note priority="1" from="description">Email hint</note>
+        <note priority="1" from="meaning">Settings Field</note>
+      </trans-unit>
+      <trans-unit id="200042501019411851" datatype="html">
+        <source>First name</source>
+        <target state="translated">Имя</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/ui/form/src/lib/user-firstname/user-firstname.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+        <note priority="1" from="description">Firstname Label</note>
+        <note priority="1" from="meaning">Settings Field</note>
+      </trans-unit>
+      <trans-unit id="3489955149128434843" datatype="html">
+        <source>John</source>
+        <target state="translated">Иван</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/ui/form/src/lib/user-firstname/user-firstname.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+        <note priority="1" from="description">Firstname Placeholder</note>
+        <note priority="1" from="meaning">Settings Field</note>
+      </trans-unit>
+      <trans-unit id="5911899011332415870" datatype="html">
+        <source>Last name</source>
+        <target state="translated">Фамилия</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/ui/form/src/lib/user-lastname/user-lastname.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+        <note priority="1" from="description">Lastname Label</note>
+        <note priority="1" from="meaning">Settings Field</note>
+      </trans-unit>
+      <trans-unit id="3539232851205995678" datatype="html">
+        <source>Doe</source>
+        <target state="translated">Иванов</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/profile/ui/form/src/lib/user-lastname/user-lastname.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+        <note priority="1" from="description">Lastname Placeholder</note>
+        <note priority="1" from="meaning">Settings Field</note>
+      </trans-unit>
+      <trans-unit id="1245151083394694549" datatype="html">
+        <source>Settings</source>
+        <target state="translated">Настройки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/settings/page/src/lib/setting-page.component.html</context>
+          <context context-type="linenumber">1,3</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Settings Page</note>
+      </trans-unit>
+      <trans-unit id="8780723130388756800" datatype="html">
+        <source>Account</source>
+        <target state="translated">Аккаунт</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/settings/page/src/lib/setting-page.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <note priority="1" from="description">Account</note>
+        <note priority="1" from="meaning">Settings Page</note>
+      </trans-unit>
+      <trans-unit id="8684790720111450453" datatype="html">
+        <source>You can log out of your account.</source>
+        <target state="translated">Вы можете выйти из своей учетной записи.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/settings/page/src/lib/setting-page.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+        <note priority="1" from="description">Description</note>
+        <note priority="1" from="meaning">Settings Page</note>
+      </trans-unit>
+      <trans-unit id="7642049784721337514" datatype="html">
+        <source>Logout</source>
+        <target state="translated">Выйти</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/settings/ui/logout/src/lib/settings-logout.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">Settings Logout</note>
       </trans-unit>
       <trans-unit id="4866067569671417977" datatype="html">
         <source>«Flashcards». All right reserved.</source>
         <target state="translated">«Flashcards». Все права защищены</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/ui/layout/src/lib/copyright/copyright.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Copyright</note>
         <note priority="1" from="meaning">Layout Footer</note>
-      </trans-unit>
-      <trans-unit id="1827103049169187094" datatype="html">
-        <source>Dashboard</source>
-        <target state="translated">Профиль</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/web/ui/layout/src/lib/nav/nav.component.ts</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-        <note priority="1" from="meaning">Nav link</note>
       </trans-unit>
       <trans-unit id="6351064392268967474" datatype="html">
         <source>Learning</source>
         <target state="translated">Обучение</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/ui/layout/src/lib/nav/nav.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <note priority="1" from="meaning">Nav link</note>
       </trans-unit>
       <trans-unit id="4548626388604319133" datatype="html">
         <source>Dictionary</source>
         <target state="translated">Словарь</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/ui/layout/src/lib/nav/nav.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="meaning">Nav link</note>
+      </trans-unit>
+      <trans-unit id="7740611327071786471" datatype="html">
+        <source>Profile</source>
+        <target state="translated">Профиль</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/ui/layout/src/lib/nav/nav.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -567,7 +757,7 @@
         <target state="translated">Переключение темного и светлого режимов</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/ui/layout/src/lib/theme-switcher/theme-switcher.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,2</context>
         </context-group>
         <note priority="1" from="description">Theme Switcher</note>
         <note priority="1" from="meaning">Header</note>

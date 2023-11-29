@@ -10,13 +10,13 @@ import { UserFirstnameComponent } from './user-firstname/user-firstname.componen
 import { UserLastnameComponent } from './user-lastname/user-lastname.component';
 
 @Component({
-  selector: 'flashcards-settings-form',
-  templateUrl: './settings-form.component.html',
-  styleUrl: './settings-form.component.scss',
+  selector: 'flashcards-profile-form',
+  templateUrl: './profile-form.component.html',
+  styleUrl: './profile-form.component.scss',
   standalone: true,
   imports: [UserLastnameComponent, UserFirstnameComponent, UserEmailComponent],
 })
-export class SettingsFormComponent implements OnInit {
+export class ProfileFormComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
 

@@ -1,6 +1,5 @@
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { APP_INITIALIZER, ApplicationConfig } from '@angular/core';
-import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter, withComponentInputBinding, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 
 import { CardService } from '@flashcards/cards/services';
@@ -12,7 +11,6 @@ import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideClientHydration(),
     provideRouter(
       appRoutes,
       withEnabledBlockingInitialNavigation(),

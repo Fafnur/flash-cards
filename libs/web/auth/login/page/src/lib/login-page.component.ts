@@ -67,7 +67,7 @@ export class LoginPageComponent {
 
             if (data) {
               // TODO: Redirect
-              void this.router.navigate(['/', 'dashboard']);
+              void this.router.navigate(['/', 'learning']);
             }
           }),
           catchError(() => {

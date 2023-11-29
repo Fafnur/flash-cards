@@ -3,8 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
 import { GroupService } from '@flashcards/groups/services';
+import { GroupFormComponent } from '@flashcards/web/groups/ui/form';
 
 @Component({
   selector: 'flashcards-group-remove-dialog',

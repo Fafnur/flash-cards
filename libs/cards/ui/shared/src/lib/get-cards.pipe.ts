@@ -12,7 +12,7 @@ import { Group } from '@flashcards/groups/common';
 export class GetCardsPipe implements PipeTransform {
   readonly cardService = inject(CardService);
 
-  transform(groupOrGroupUuid: Group | string | null | undefined, learn?: boolean): Observable<Card[]> {
+  transform(groupOrGroupUuid: Group | string | null | undefined): Observable<Card[]> {
     if (!groupOrGroupUuid) {
       return EMPTY;
     }

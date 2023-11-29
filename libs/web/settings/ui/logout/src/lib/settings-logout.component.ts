@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 import { AuthService } from '@flashcards/auth/services';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'flashcards-settings-logout',

@@ -13,7 +13,7 @@ export class SizeDirective {
   }
 
   @HostBinding('class.flashcards-size-medium') get isMedium(): boolean {
-    return this.size === 'medium';
+    return !this.size || this.size === 'medium';
   }
 
   @HostBinding('class.flashcards-size-large') get isLarge(): boolean {

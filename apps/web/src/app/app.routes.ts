@@ -29,7 +29,7 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'settings',
-        loadChildren: () => import('./routes/users.routes').then((modules) => modules.usersRoutes),
+        loadComponent: () => import('@flashcards/web/settings/page').then((modules) => modules.SettingPageComponent),
       },
       {
         path: 'groups',
@@ -43,7 +43,11 @@ export const appRoutes: Route[] = [
     loadChildren: () => import('./routes/auth.routes').then((modules) => modules.authRoutes),
   },
   {
-    path: '',
-    loadChildren: () => import('./routes/errors.routes').then((modules) => modules.errorsRoutes),
+    path: 'permission-denied',
+    loadComponent: () => import('@flashcards/web/errors/permission-denied/page').then((modules) => modules.PermissionDeniedPageComponent),
+  },
+  {
+    path: '**',
+    loadComponent: () => import('@flashcards/web/errors/not-found/page').then((modules) => modules.NotFoundPageComponent),
   },
 ];

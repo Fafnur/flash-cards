@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { catchError, EMPTY, finalize, Observable, tap } from 'rxjs';
 
 import { AuthResponse } from '@flashcards/auth/common';
@@ -44,6 +44,7 @@ export class LoginPageComponent {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly destroyRef: DestroyRef,
     private readonly authService: AuthService,
+    private readonly router: Router,
   ) {}
 
   onSubmit(): void {
@@ -66,6 +67,7 @@ export class LoginPageComponent {
 
             if (data) {
               // TODO: Redirect
+              void this.router.navigate(['/', 'dashboard']);
             }
           }),
           catchError(() => {

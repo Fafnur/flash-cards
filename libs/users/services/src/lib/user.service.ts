@@ -4,7 +4,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 
 import { AuthService } from '@flashcards/auth/services';
 import { isNotNullOrUndefined } from '@flashcards/core';
-import { User } from '@flashcards/users/common';
+import { User, UserChange } from '@flashcards/users/common';
 
 import { UserStorage } from './user.storage';
 import { UserApiService } from './user-api.service';
@@ -24,6 +24,7 @@ export class UserService {
     private readonly destroyRef: DestroyRef,
   ) {
     this.authService.logged$.pipe(tap(() => this.load())).subscribe();
+    this.authService.logout$.pipe(tap(() => this.remove())).subscribe();
   }
 
   get uuid(): string {
@@ -57,5 +58,20 @@ export class UserService {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
+  }
+
+  update(userChange: UserChange): void {
+    const user = this.state$.getValue();
+    if (user) {
+      this.userStorage.set({ ...user, ...userChange });
+    }
+  }
+
+  remove(): void {
+    const user = this.state$.getValue();
+    if (user) {
+      this.userStorage.remove(user.uuid);
+      this.state$.next(null);
+    }
   }
 }

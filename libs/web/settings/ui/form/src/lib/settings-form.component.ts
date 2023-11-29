@@ -1,7 +1,6 @@
-import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
 import { filter, switchMap, take, tap } from 'rxjs';
 
 import { UserService } from '@flashcards/users/services';
@@ -15,7 +14,7 @@ import { UserLastnameComponent } from './user-lastname/user-lastname.component';
   templateUrl: './settings-form.component.html',
   styleUrl: './settings-form.component.scss',
   standalone: true,
-  imports: [UserLastnameComponent, UserFirstnameComponent, UserEmailComponent, MatCardModule],
+  imports: [UserLastnameComponent, UserFirstnameComponent, UserEmailComponent],
 })
 export class SettingsFormComponent implements OnInit {
   private readonly userService = inject(UserService);

@@ -11,8 +11,10 @@ import { AuthApiService } from './auth-api.service';
 })
 export class AuthService {
   private readonly loggedAction$ = new ReplaySubject<void>(1);
+  private readonly logoutAction$ = new ReplaySubject<void>(1);
 
   readonly logged$ = this.loggedAction$.asObservable();
+  readonly logout$ = this.logoutAction$.asObservable();
 
   constructor(
     private readonly authApiService: AuthApiService,
@@ -50,6 +52,7 @@ export class AuthService {
 
   logout(): void {
     this.authStorage.remove();
+    this.logoutAction$.next();
     // TODO: navigate to login
   }
 
